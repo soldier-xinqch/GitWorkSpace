@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd">
+
+	<!-- 疑惑：貌似rest要比hessian 要好一点！   -->
+	<!--  必要配置项          -->
+    <!-- 扫描并加注HessianService 使用的bean -->
+    <context:annotation-config />
+ 	<!-- 组件扫描,使用annotation 自动注册bean,并检查@Required,@Autowired的属性已被注入 -->  
+	<context:component-scan base-package="com.xinqch" />
+	<!-- 自动装配 -->  
+	<bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor" />
+	
+	<bean id="defaultHandlerMapping" class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping"/>   
+
+    <!--Hessian 启动BeanNameMapping 映射功能,以httpRequest作为处理Adapter-->
+    <bean class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping">
+        <property name="defaultHandler" ref="httpRequestHandlerAdapter" />
+    </bean>
+
+    <!-- Hessian 方式以Http进行传递 -->
+    <bean id="httpRequestHandlerAdapter"
+        class="org.springframework.web.servlet.mvc.HttpRequestHandlerAdapter" />
+
+
+    <!--         以下为业务Bean      -->
+    <!--Hadoop计算完后 发布Result的 Remote Server -->
+    <bean name="/hessianRpcServer"
+        class="org.springframework.remoting.caucho.HessianServiceExporter">
+        <property name="service" ref="testHessian" />
+        <property name="serviceInterface"
+            value="com.xinqch.hessian.service.TestHessianRpcService" />
+    </bean>
+
+    <bean id="testHessian"
+        class="com.xinqch.hessian.service.Impl.TestHessianRpcServiceImpl" />
+
+
+	<!-- 发布多个hessian服务  -->
+   <!--  <bean name="/hessianConditionService"
+        class="org.springframework.remoting.caucho.HessianServiceExporter">
+        <property name="service" ref="conditionHessianService" />
+        <property name="serviceInterface"
+            value="com.*.*.remote.hessian.HessianConditionService" />
+    </bean>
+
+    <bean id="conditionHessianService"
+        class="com.*.*.sill.job.service.export.HessianConditionServiceHandler" /> -->
+
+</beans>

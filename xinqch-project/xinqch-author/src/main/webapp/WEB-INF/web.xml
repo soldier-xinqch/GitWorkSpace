@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app>
+	<display-name>Archetype Created Web Application</display-name>
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath:config/spring-context.xml</param-value>
+	</context-param>
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener
+		</listener-class>
+	</listener>
+
+	<!-- spring mvc容器和servlet的定义 -->
+	<servlet>
+		<servlet-name>springMVC</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet
+		</servlet-class>
+		<!-- 这里的参数如果不配置，则默认查找web-inf下的{servlet-name}-servlet.xml文件 -->
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>classpath:config/spring-web.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>springMVC</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+
+
+	<!-- springMvc + hessian -->
+	<servlet>
+		<servlet-name>springHessian</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet
+		</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>classpath:/config/springHessian-servlet.xml
+			</param-value>
+		</init-param>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>springHessian</servlet-name>
+		<url-pattern>/hessianRpc/*</url-pattern>
+	</servlet-mapping>
+
+	<!-- servlet 专区 开始 -->
+	<servlet>
+		<servlet-name>testServlet</servlet-name>
+		<servlet-class>com.xinqch.servlet.TestServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>testServlet</servlet-name>
+		<url-pattern>/testServlet</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>testServlet1</servlet-name>
+		<servlet-class>com.xinqch.servlet.TestServlet1</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>testServlet1</servlet-name>
+		<url-pattern>/testServlet1</url-pattern>
+	</servlet-mapping>
+	<!-- servlet 专区 结束 -->
+
+	<!-- 使用H2控制台的Servlet H2控制台是一个独立的应用程序，包括它自己的Web服务器，但它可以作为一个servlet作为 -->
+	<servlet>
+		<servlet-name>H2Console</servlet-name>
+		<servlet-class>org.h2.server.web.WebServlet</servlet-class>
+		<load-on-startup>2</load-on-startup>
+	</servlet>
+	<!-- 映射H2控制台的访问路径 通过H2 Console测试 http://localhost:8080/APPName/console -->
+	<servlet-mapping>
+		<servlet-name>H2Console</servlet-name>
+		<url-pattern>/console/*</url-pattern>
+	</servlet-mapping>
+
+	<!--UTF8 编码过滤 -->
+	<filter>
+		<filter-name>CharacterEncodingFilter</filter-name>
+		<filter-class>
+			org.springframework.web.filter.CharacterEncodingFilter
+		</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+		<init-param>
+			<param-name>forceEncoding</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>CharacterEncodingFilter</filter-name>
+		<url-pattern>/</url-pattern>
+	</filter-mapping>
+	
+	<session-config>
+		<session-timeout>40</session-timeout>
+	</session-config>
+</web-app>

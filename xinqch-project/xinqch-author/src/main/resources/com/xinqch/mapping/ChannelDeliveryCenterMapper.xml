@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xinqch.mapper.ChannelDeliveryCenterMapper" >
+  <resultMap id="BaseResultMap" type="com.xinqch.model.ChannelDeliveryCenterEntity" >
+    <id column="DELIVERY_CENTER_ID" property="deliveryCenterId" jdbcType="DECIMAL" />
+    <result column="CHANNEL_ID" property="channelId" jdbcType="DECIMAL" />
+    <result column="OUTER_ID" property="outerId" jdbcType="VARCHAR" />
+    <result column="NAME" property="name" jdbcType="VARCHAR" />
+    <result column="PROVINCE" property="province" jdbcType="VARCHAR" />
+    <result column="CITY" property="city" jdbcType="VARCHAR" />
+    <result column="COUNTRY" property="country" jdbcType="VARCHAR" />
+    <result column="ADDRESS" property="address" jdbcType="VARCHAR" />
+    <result column="REGION" property="region" jdbcType="VARCHAR" />
+    <result column="CONTACT_NAME" property="contactName" jdbcType="VARCHAR" />
+    <result column="ZIP" property="zip" jdbcType="VARCHAR" />
+    <result column="PHONE" property="phone" jdbcType="VARCHAR" />
+    <result column="MOBILE" property="mobile" jdbcType="VARCHAR" />
+    <result column="GET_DEF" property="getDef" jdbcType="INTEGER" />
+    <result column="CANCEL_DEF" property="cancelDef" jdbcType="INTEGER" />
+    <result column="STATE" property="state" jdbcType="INTEGER" />
+    <result column="COMPANY_NAME" property="companyName" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <sql id="Base_Column_List" >
+    DELIVERY_CENTER_ID, CHANNEL_ID, OUTER_ID, NAME, PROVINCE, CITY, COUNTRY, ADDRESS, 
+    REGION, CONTACT_NAME, ZIP, PHONE, MOBILE, GET_DEF, CANCEL_DEF, STATE, COMPANY_NAME
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.math.BigDecimal" >
+    select 
+    <include refid="Base_Column_List" />
+    from channel_delivery_center
+    where DELIVERY_CENTER_ID = #{deliveryCenterId,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.math.BigDecimal" >
+    delete from channel_delivery_center
+    where DELIVERY_CENTER_ID = #{deliveryCenterId,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="com.xinqch.model.ChannelDeliveryCenterEntity" >
+    insert into channel_delivery_center (DELIVERY_CENTER_ID, CHANNEL_ID, OUTER_ID, 
+      NAME, PROVINCE, CITY, 
+      COUNTRY, ADDRESS, REGION, 
+      CONTACT_NAME, ZIP, PHONE, 
+      MOBILE, GET_DEF, CANCEL_DEF, 
+      STATE, COMPANY_NAME)
+    values (#{deliveryCenterId,jdbcType=DECIMAL}, #{channelId,jdbcType=DECIMAL}, #{outerId,jdbcType=VARCHAR}, 
+      #{name,jdbcType=VARCHAR}, #{province,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR}, 
+      #{country,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{region,jdbcType=VARCHAR}, 
+      #{contactName,jdbcType=VARCHAR}, #{zip,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
+      #{mobile,jdbcType=VARCHAR}, #{getDef,jdbcType=INTEGER}, #{cancelDef,jdbcType=INTEGER}, 
+      #{state,jdbcType=INTEGER}, #{companyName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xinqch.model.ChannelDeliveryCenterEntity" >
+    insert into channel_delivery_center
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="deliveryCenterId != null" >
+        DELIVERY_CENTER_ID,
+      </if>
+      <if test="channelId != null" >
+        CHANNEL_ID,
+      </if>
+      <if test="outerId != null" >
+        OUTER_ID,
+      </if>
+      <if test="name != null" >
+        NAME,
+      </if>
+      <if test="province != null" >
+        PROVINCE,
+      </if>
+      <if test="city != null" >
+        CITY,
+      </if>
+      <if test="country != null" >
+        COUNTRY,
+      </if>
+      <if test="address != null" >
+        ADDRESS,
+      </if>
+      <if test="region != null" >
+        REGION,
+      </if>
+      <if test="contactName != null" >
+        CONTACT_NAME,
+      </if>
+      <if test="zip != null" >
+        ZIP,
+      </if>
+      <if test="phone != null" >
+        PHONE,
+      </if>
+      <if test="mobile != null" >
+        MOBILE,
+      </if>
+      <if test="getDef != null" >
+        GET_DEF,
+      </if>
+      <if test="cancelDef != null" >
+        CANCEL_DEF,
+      </if>
+      <if test="state != null" >
+        STATE,
+      </if>
+      <if test="companyName != null" >
+        COMPANY_NAME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="deliveryCenterId != null" >
+        #{deliveryCenterId,jdbcType=DECIMAL},
+      </if>
+      <if test="channelId != null" >
+        #{channelId,jdbcType=DECIMAL},
+      </if>
+      <if test="outerId != null" >
+        #{outerId,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null" >
+        #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="country != null" >
+        #{country,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="region != null" >
+        #{region,jdbcType=VARCHAR},
+      </if>
+      <if test="contactName != null" >
+        #{contactName,jdbcType=VARCHAR},
+      </if>
+      <if test="zip != null" >
+        #{zip,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null" >
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="getDef != null" >
+        #{getDef,jdbcType=INTEGER},
+      </if>
+      <if test="cancelDef != null" >
+        #{cancelDef,jdbcType=INTEGER},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=INTEGER},
+      </if>
+      <if test="companyName != null" >
+        #{companyName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xinqch.model.ChannelDeliveryCenterEntity" >
+    update channel_delivery_center
+    <set >
+      <if test="channelId != null" >
+        CHANNEL_ID = #{channelId,jdbcType=DECIMAL},
+      </if>
+      <if test="outerId != null" >
+        OUTER_ID = #{outerId,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        NAME = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null" >
+        PROVINCE = #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        CITY = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="country != null" >
+        COUNTRY = #{country,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        ADDRESS = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="region != null" >
+        REGION = #{region,jdbcType=VARCHAR},
+      </if>
+      <if test="contactName != null" >
+        CONTACT_NAME = #{contactName,jdbcType=VARCHAR},
+      </if>
+      <if test="zip != null" >
+        ZIP = #{zip,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        PHONE = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null" >
+        MOBILE = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="getDef != null" >
+        GET_DEF = #{getDef,jdbcType=INTEGER},
+      </if>
+      <if test="cancelDef != null" >
+        CANCEL_DEF = #{cancelDef,jdbcType=INTEGER},
+      </if>
+      <if test="state != null" >
+        STATE = #{state,jdbcType=INTEGER},
+      </if>
+      <if test="companyName != null" >
+        COMPANY_NAME = #{companyName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where DELIVERY_CENTER_ID = #{deliveryCenterId,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xinqch.model.ChannelDeliveryCenterEntity" >
+    update channel_delivery_center
+    set CHANNEL_ID = #{channelId,jdbcType=DECIMAL},
+      OUTER_ID = #{outerId,jdbcType=VARCHAR},
+      NAME = #{name,jdbcType=VARCHAR},
+      PROVINCE = #{province,jdbcType=VARCHAR},
+      CITY = #{city,jdbcType=VARCHAR},
+      COUNTRY = #{country,jdbcType=VARCHAR},
+      ADDRESS = #{address,jdbcType=VARCHAR},
+      REGION = #{region,jdbcType=VARCHAR},
+      CONTACT_NAME = #{contactName,jdbcType=VARCHAR},
+      ZIP = #{zip,jdbcType=VARCHAR},
+      PHONE = #{phone,jdbcType=VARCHAR},
+      MOBILE = #{mobile,jdbcType=VARCHAR},
+      GET_DEF = #{getDef,jdbcType=INTEGER},
+      CANCEL_DEF = #{cancelDef,jdbcType=INTEGER},
+      STATE = #{state,jdbcType=INTEGER},
+      COMPANY_NAME = #{companyName,jdbcType=VARCHAR}
+    where DELIVERY_CENTER_ID = #{deliveryCenterId,jdbcType=DECIMAL}
+  </update>
+  
+   <!--  自定义sql begin -->
+  <select id="getChannelDeliveryCenterSizeByCondition" 
+  	parameterType="com.xinqch.model.ChannelDeliveryCenterCondition" resultType="int">
+  		select  count(*)
+		from channel_delivery_center
+		where STATE = 0
+		<if test="channelId != null">
+			AND CHANNEL_ID = #{channelId}
+		</if>
+		<if test="channelDeliveryCenterId != null">
+			AND DELIVERY_CENTER_ID = #{channelDeliveryCenterId}
+		</if>
+		limit #{pageNo},#{pageSize}
+		<if test="sortField !=null">
+	       ORDER BY ${sortField}
+	       <if test="sortDesc !=null AND sortDesc == true">
+		       DESC
+		   </if>
+		</if>
+  </select> 
+  
+    <select id="findChannelDeliveryCenterByCondition" 
+  	parameterType="com.xinqch.model.ChannelDeliveryCenterCondition" resultMap="BaseResultMap">
+  		select 
+		<include refid="Base_Column_List" />
+		from channel_delivery_center
+		where STATE = 0
+		<if test="channelId != null">
+			AND CHANNEL_ID = #{channelId}
+		</if>
+		<if test="channelDeliveryCenterId != null">
+			AND DELIVERY_CENTER_ID = #{channelDeliveryCenterId}
+		</if>
+		limit #{pageNo},#{pageSize}
+		<if test="sortField !=null">
+	       ORDER BY ${sortField}
+	       <if test="sortDesc !=null AND sortDesc == true">
+		       DESC
+		   </if>
+		</if>
+  </select> 
+  
+  <select id="getList" resultType="String">
+  		select DELIVERY_CENTER_ID from  channel_delivery_center
+		where STATE = 0
+  </select>
+  
+</mapper>

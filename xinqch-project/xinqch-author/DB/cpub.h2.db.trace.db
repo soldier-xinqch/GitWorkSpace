@@ -1,0 +1,24 @@
+08-27 10:26:20 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "COURT_CASE_PLAN" not found; SQL statement:
+select case_id from (select count(id) num,case_id from court_case_plan where del_flag is false group by case_id)  tbl where num>1 [42102-187]
+08-27 10:26:20 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "COURT_CASE_PLAN" not found; SQL statement:
+SELECT p.CASE_ID,c.CASE_NUM,p.id PLAN_ID FROM COURT_CASE_PLAN p left join COURT_CASE c on p.case_id=c.id where p.del_flag is false and c.del_flag is false and (vod_access_url is null or vod_access_url='[]') order by p.CREATE_TIME desc [42102-187]
+08-27 10:26:59 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "COURT_CASE_PLAN" not found; SQL statement:
+select case_id from (select count(id) num,case_id from court_case_plan where del_flag is false group by case_id)  tbl where num>1 [42102-187]
+08-27 10:26:59 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "COURT_CASE_PLAN" not found; SQL statement:
+SELECT p.CASE_ID,c.CASE_NUM,p.id PLAN_ID FROM COURT_CASE_PLAN p left join COURT_CASE c on p.case_id=c.id where p.del_flag is false and c.del_flag is false and (vod_access_url is null or vod_access_url='[]') order by p.CREATE_TIME desc [42102-187]
+08-27 10:27:14 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "COURT_CASE_PLAN" not found; SQL statement:
+select case_id from (select count(id) num,case_id from court_case_plan where del_flag is false group by case_id)  tbl where num>1 [42102-187]
+08-27 10:27:14 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "COURT_CASE_PLAN" not found; SQL statement:
+SELECT p.CASE_ID,c.CASE_NUM,p.id PLAN_ID FROM COURT_CASE_PLAN p left join COURT_CASE c on p.case_id=c.id where p.del_flag is false and c.del_flag is false and (vod_access_url is null or vod_access_url='[]') order by p.CREATE_TIME desc [42102-187]
+08-27 10:27:32 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "COURT_CASE_PLAN" not found; SQL statement:
+select case_id from (select count(id) num,case_id from court_case_plan where del_flag is false group by case_id)  tbl where num>1 [42102-187]
+08-27 10:27:32 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "COURT_CASE_PLAN" not found; SQL statement:
+SELECT p.CASE_ID,c.CASE_NUM,p.id PLAN_ID FROM COURT_CASE_PLAN p left join COURT_CASE c on p.case_id=c.id where p.del_flag is false and c.del_flag is false and (vod_access_url is null or vod_access_url='[]') order by p.CREATE_TIME desc [42102-187]
