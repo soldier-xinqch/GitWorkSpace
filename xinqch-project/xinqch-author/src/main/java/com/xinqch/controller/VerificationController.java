@@ -30,8 +30,12 @@ public class VerificationController{
 	
 	@RequestMapping(value = "/index", method = RequestMethod.GET)  
 	public void validIndex(HttpServletRequest request,HttpServletResponse response){
-		response.setContentType("image/png");
+		 //设置页面不缓存  
 		response.setHeader("cache", "no-cache");
+        response.setHeader("Pragma", "no-cache");  
+        response.setHeader("Cache-Control", "no-cache");  
+        response.setDateHeader("Expires", 0);  
+		response.setContentType("image/png");
 		HttpSession session = request.getSession(true);
 		try {
 			OutputStream out = response.getOutputStream();

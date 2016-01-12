@@ -15,8 +15,12 @@ public class IndexController {
 	
 	
 	
-	@RequestMapping(value = "/LoginIndex", method = RequestMethod.GET)  
-	public String toIndexPage(){
+	@RequestMapping(value = "/loginIndex", method = RequestMethod.GET)  
+	public String toIndexPage(HttpServletResponse resp){
+		 //设置页面不缓存  
+		resp.setHeader("Pragma", "no-cache");  
+		resp.setHeader("Cache-Control", "no-cache");  
+		resp.setDateHeader("Expires", 0);  
 		return "/login/login";
 	}
 	

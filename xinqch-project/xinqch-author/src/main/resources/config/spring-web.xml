@@ -45,6 +45,9 @@
 		<property value="text/html;charset=UTF-8" name="contentType">
 		</property>
 	</bean>
+	
+	<!-- 默认访问跳转到登录页面(即定义无需Controller的url<->view直接映射) -->  
+    <mvc:view-controller path="/" view-name="forward:/index.jsp"/>  
 
 	<!-- 避免IE执行AJAX时,返回JSON出现下载文件 -->
 	<!-- <bean id="mappingJacksonHttpMessageConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"> 
@@ -62,5 +65,18 @@
 		cache-period="31556926"  order="2147483647" />
 	<mvc:resources mapping="public/fonts/**" location="public/fonts/"
 		cache-period="31556926"  order="2147483647" />
+		
+	<!-- SpringMVC在超出上传文件限制时，会抛出org.springframework.web.multipart.MaxUploadSizeExceededException -->  
+    <!-- 该异常是SpringMVC在检查上传的文件信息时抛出来的，而且此时还没有进入到Controller方法中 -->  
+    <bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">  
+        <property name="exceptionMappings">  
+            <props>  
+                <!-- 遇到MaxUploadSizeExceededException异常时，自动跳转到/WEB-INF/error_fileupload.jsp页面 -->  
+                <prop key="org.springframework.web.multipart.MaxUploadSizeExceededException">WEB-INF/error_fileupload</prop>  
+                <!-- 处理其它异常(包括Controller抛出的) -->  
+                <prop key="java.lang.Throwable">WEB-INF/500</prop>  
+            </props>  
+        </property>  
+    </bean>
 		
 </beans>
