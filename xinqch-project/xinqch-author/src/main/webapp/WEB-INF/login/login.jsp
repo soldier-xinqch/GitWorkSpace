@@ -23,13 +23,17 @@
 					<div id="passwd-input" class="form-group">
 						<input type="password" class="form-control" name="loginPasswd" value="" placeholder="请输入登录密码"  />
 					</div>
+					<div class="form-group">
+						<input type="password" class="form-control" name="loginPasswd" value="" placeholder="请输入验证码"  />
+						<img id="validImage" alt="验证码图片" src="<%=request.getContextPath()%>/valid/index">
+					</div>
 					<div class="form-group checkbox">
 						<label>
 							<input type="checkbox" class="" name="loginStatus" value="" />下次自动登录
 						</label>
 					</div>
 					<div class="form-group" style="height: 40px;">
-						<input type="button" class="btn btn-success col-md-5 loginBtn" value="登录" />
+						<input type="submit" class="btn btn-success col-md-5 loginBtn" value="登录" />
 						<input type="reset" class="btn btn-primary col-md-5 loginBtn" value="重置" />
 					</div>
 					<div class="form-group" style="height: 10px;">
@@ -38,7 +42,7 @@
 				</form>
 			</div>
 			<div id="registered">
-				<form id="registeredForm" name="registeredForm" action="loginHome" method="post" accept-charset="UTF-8">
+				<form id="registeredForm" name="registeredForm" action="/into/loginHome" method="post" accept-charset="UTF-8">
 					<%-- 隐藏域 --%>
 						<input type="hidden" name="loginStatus" value="registered">
 					<%-- 隐藏域 --%>

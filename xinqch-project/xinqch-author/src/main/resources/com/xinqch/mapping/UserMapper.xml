@@ -195,4 +195,11 @@
       parent_id = #{parentId,jdbcType=VARCHAR}
     where id = #{id,jdbcType=VARCHAR}
   </update>
+  
+  <select id="loginValid" resultMap="BaseResultMap">
+  	select *　from user 
+  	<if test="null != userName and null != passWord ">
+	  	where user_name=#{userName} and PASS_WORD=#{passWord}
+  	</if>
+  </select>
 </mapper>

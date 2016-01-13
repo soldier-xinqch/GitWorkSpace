@@ -1,5 +1,7 @@
 package com.xinqch.mapper;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.xinqch.model.User;
 
 public interface UserMapper {
@@ -16,4 +18,6 @@ public interface UserMapper {
     int updateByPrimaryKeyWithBLOBs(User record);
 
     int updateByPrimaryKey(User record);
+    
+    User loginValid(@Param("userName") String userName,@Param("passWord") String passWord);
 }
