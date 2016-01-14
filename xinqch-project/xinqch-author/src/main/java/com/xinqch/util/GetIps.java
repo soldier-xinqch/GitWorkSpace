@@ -4,14 +4,52 @@ import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
+import java.net.Inet4Address;
+import java.net.InetAddress;
+import java.net.NetworkInterface;
+import java.net.SocketException;
 import java.net.URL;
+import java.util.Enumeration;
 
 import javax.servlet.http.HttpServletRequest;
 
 import com.alibaba.fastjson.JSONObject;
 
+/**
+ *  ip处理工具类
+ * @author xinqch
+ *
+ */
 public class GetIps {
-	
+
+	/**
+	 * 获取本地IP
+	 * @return
+	 */
+	public static String getLocalIp() {
+		String ipStr = null;
+		try {
+			Enumeration<NetworkInterface> allNetInterfaces = NetworkInterface.getNetworkInterfaces();
+			InetAddress ip = null;
+			while (allNetInterfaces.hasMoreElements()) {
+				NetworkInterface netInterface = (NetworkInterface) allNetInterfaces
+						.nextElement();
+//				System.out.println(netInterface.getName());
+				Enumeration<InetAddress> addresses = netInterface.getInetAddresses();
+				while (addresses.hasMoreElements()) {
+					ip = (InetAddress) addresses.nextElement();
+					if (ip != null && ip instanceof Inet4Address) {
+//						System.out.println("本机的IP = " + ip.getHostAddress());
+						ipStr = ip.getHostAddress();
+					}
+				}
+			}
+		} catch (SocketException e) {
+			e.printStackTrace();
+		}
+		return ipStr;
+	}
+
 	/**
 	 * 获取登录用户IP地址
 	 * 
@@ -19,24 +57,25 @@ public class GetIps {
 	 * @return
 	 */
 	public static String getIpAddr(HttpServletRequest request) {
-	    String ip = request.getHeader("x-forwarded-for");
-	    if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
-	        ip = request.getHeader("Proxy-Client-IP");
-	    }
-	    if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
-	        ip = request.getHeader("WL-Proxy-Client-IP");
-	    }
-	    if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
-	        ip = request.getRemoteAddr();
-	    }
-	    if (ip.equals("0:0:0:0:0:0:0:1")) {
-	        ip = "本地";
-	    }
-	    return ip;
+		String ip = request.getHeader("x-forwarded-for");
+		if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
+			ip = request.getHeader("Proxy-Client-IP");
+		}
+		if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
+			ip = request.getHeader("WL-Proxy-Client-IP");
+		}
+		if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
+			ip = request.getRemoteAddr();
+		}
+		if (ip.equals("0:0:0:0:0:0:0:1")) {
+			ip = "本地";
+		}
+		return ip;
 	}
 
 	/**
 	 * 获取地址
+	 * 
 	 * @param params
 	 * @param encoding
 	 * @return
@@ -79,11 +118,13 @@ public class GetIps {
 			connection.setRequestMethod("POST");// 提交方法POST|GET
 			connection.setUseCaches(false);// 是否缓存true|false
 			connection.connect();// 打开连接端口
-			DataOutputStream out = new DataOutputStream(connection.getOutputStream());
+			DataOutputStream out = new DataOutputStream(
+					connection.getOutputStream());
 			out.writeBytes(params);
 			out.flush();
 			out.close();
-			BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream(), encoding));
+			BufferedReader reader = new BufferedReader(new InputStreamReader(
+					connection.getInputStream(), encoding));
 			StringBuffer buffer = new StringBuffer();
 			String line = "";
 			while ((line = reader.readLine()) != null) {
@@ -98,11 +139,13 @@ public class GetIps {
 		}
 		return null;
 	}
-	
+
 	public static void main(String[] args) {
 		GetIps ips = new GetIps();
 		try {
 			System.out.println(ips.getAddress("ip=118.198.153.154", "utf-8"));
+			String ipStr = getLocalIp();
+			System.out.println(ipStr);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
