@@ -18,7 +18,7 @@ import org.springframework.stereotype.Component;
 import com.xinqch.model.User;
 import com.xinqch.service.UserService;
 
-@Component
+@Component("loginRealm")
 public class LoginRealm extends AuthorizingRealm {
 	
 	@Autowired
