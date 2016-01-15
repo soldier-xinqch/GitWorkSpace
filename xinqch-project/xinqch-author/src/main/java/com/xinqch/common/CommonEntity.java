@@ -9,7 +9,7 @@ public class CommonEntity implements Serializable{
 
 	public Date createTime;
 	public String createUser;
-	public String modifyTime;
+	public Date modifyTime;
 	public String modifyUser;
 	public Date getCreateTime() {
 		return createTime;
@@ -23,10 +23,10 @@ public class CommonEntity implements Serializable{
 	public void setCreateUser(String createUser) {
 		this.createUser = createUser;
 	}
-	public String getModifyTime() {
+	public Date getModifyTime() {
 		return modifyTime;
 	}
-	public void setModifyTime(String modifyTime) {
+	public void setModifyTime(Date modifyTime) {
 		this.modifyTime = modifyTime;
 	}
 	public String getModifyUser() {

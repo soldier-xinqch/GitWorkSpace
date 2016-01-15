@@ -3,6 +3,7 @@ package com.xinqch.shiro.common;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.annotation.PostConstruct;
 import javax.servlet.Filter;
 
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
@@ -22,8 +23,20 @@ public class ShiroFactory extends ShiroFilterFactoryBean{
 	private	String successUrl;
 	private	String unauthorizedUrl;
 	
-	public ShiroFactory() {
-		super();
+	private Map<String,String> tempUrlFilter(){
+		Map<String,String> map = new HashMap<String,String>();
+		map.put("/into/loginIndex", "anon");
+		map.put("/into/loginHome", "anon");
+		map.put("/into/**", "authc");
+		return map;
+	}
+	
+	@PostConstruct 
+	public void setFactoryParams(){
+		loginUrl = "/";
+		successUrl = "/into/loginHome";
+		
+		
 		this.setSecurityManager(shiromanager);
 		this.setLoginUrl(loginUrl);
 		this.setSuccessUrl(successUrl);
@@ -33,14 +46,6 @@ public class ShiroFactory extends ShiroFilterFactoryBean{
 		Map<String,Filter> filterMap = new HashMap<String,Filter>();
 		filterMap.put("loginFilter", shiroValidFilter);
 		this.setFilters(filterMap);
-	}
-	
-	private Map<String,String> tempUrlFilter(){
-		Map<String,String> map = new HashMap<String,String>();
-		map.put("/into/loginIndex", "anon");
-		map.put("/into/loginHome", "anon");
-		map.put(" /into/**", "authc");
-		return map;
 	}
 }
 

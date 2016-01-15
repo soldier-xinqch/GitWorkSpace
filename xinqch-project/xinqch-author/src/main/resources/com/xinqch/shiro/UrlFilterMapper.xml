@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xinqch.shiro.mapper.UrlFilterMapper" >
+  <resultMap id="BaseResultMap" type="com.xinqch.shiro.pojo.UrlFilter" >
+    <id column="url_id" property="urlId" jdbcType="VARCHAR" />
+    <result column="url_name" property="urlName" jdbcType="VARCHAR" />
+    <result column="url_adress" property="urlAdress" jdbcType="VARCHAR" />
+    <result column="url_roles_id" property="urlRolesId" jdbcType="VARCHAR" />
+    <result column="url_roles" property="urlRoles" jdbcType="VARCHAR" />
+    <result column="permissions" property="permissions" jdbcType="VARCHAR" />
+    <result column="shiro_valid" property="shiroValid" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="create_user" property="createUser" jdbcType="VARCHAR" />
+    <result column="modify_time" property="modifyTime" jdbcType="TIMESTAMP" />
+    <result column="modify_user" property="modifyUser" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    url_id, url_name, url_adress, url_roles_id, url_roles, permissions, shiro_valid, 
+    create_time, create_user, modify_time, modify_user
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from url_filter
+    where url_id = #{urlId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from url_filter
+    where url_id = #{urlId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.xinqch.shiro.pojo.UrlFilter" >
+    insert into url_filter (url_id, url_name, url_adress, 
+      url_roles_id, url_roles, permissions, 
+      shiro_valid, create_time, create_user, 
+      modify_time, modify_user)
+    values (#{urlId,jdbcType=VARCHAR}, #{urlName,jdbcType=VARCHAR}, #{urlAdress,jdbcType=VARCHAR}, 
+      #{urlRolesId,jdbcType=VARCHAR}, #{urlRoles,jdbcType=VARCHAR}, #{permissions,jdbcType=VARCHAR}, 
+      #{shiroValid,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{createUser,jdbcType=VARCHAR}, 
+      #{modifyTime,jdbcType=TIMESTAMP}, #{modifyUser,jdbcType=VARCHAR})
+  </insert>
+
+  <update id="updateByPrimaryKey" parameterType="com.xinqch.shiro.pojo.UrlFilter" >
+    update url_filter
+    set url_name = #{urlName,jdbcType=VARCHAR},
+      url_adress = #{urlAdress,jdbcType=VARCHAR},
+      url_roles_id = #{urlRolesId,jdbcType=VARCHAR},
+      url_roles = #{urlRoles,jdbcType=VARCHAR},
+      permissions = #{permissions,jdbcType=VARCHAR},
+      shiro_valid = #{shiroValid,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      create_user = #{createUser,jdbcType=VARCHAR},
+      modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      modify_user = #{modifyUser,jdbcType=VARCHAR}
+    where url_id = #{urlId,jdbcType=VARCHAR}
+  </update>
+</mapper>
