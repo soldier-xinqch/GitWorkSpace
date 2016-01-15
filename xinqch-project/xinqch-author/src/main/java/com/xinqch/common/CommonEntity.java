@@ -11,6 +11,13 @@ public class CommonEntity implements Serializable{
 	public String createUser;
 	public Date modifyTime;
 	public String modifyUser;
+	private Boolean delFlag;
+	public Boolean getDelFlag() {
+		return delFlag;
+	}
+	public void setDelFlag(Boolean delFlag) {
+		this.delFlag = delFlag;
+	}
 	public Date getCreateTime() {
 		return createTime;
 	}

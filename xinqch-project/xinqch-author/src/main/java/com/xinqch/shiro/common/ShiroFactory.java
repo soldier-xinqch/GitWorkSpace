@@ -10,11 +10,15 @@ import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.xinqch.shiro.service.UrlFilterService;
+
 @Component("shiroFilter")
 public class ShiroFactory extends ShiroFilterFactoryBean{
 	
 	@Autowired
 	private ShiroManager shiromanager;
+	@Autowired
+	private UrlFilterService urlFilterService;
 	
 	@Autowired
 	private ShiroValidFilter shiroValidFilter;
@@ -47,5 +51,6 @@ public class ShiroFactory extends ShiroFilterFactoryBean{
 		filterMap.put("loginFilter", shiroValidFilter);
 		this.setFilters(filterMap);
 	}
+	
 }
 

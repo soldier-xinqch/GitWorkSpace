@@ -1,17 +1,16 @@
 package com.xinqch.shiro.mapper;
 
+import java.util.List;
+
+import com.xinqch.common.CommonSqlMapper;
 import com.xinqch.shiro.pojo.UrlFilter;
 
-public interface UrlFilterMapper {
-    int deleteByPrimaryKey(String urlId);
+public interface UrlFilterMapper extends CommonSqlMapper {
+    int deleteByPrimaryKey(String filterId);
 
     int insert(UrlFilter record);
 
-    int insertSelective(UrlFilter record);
-
-    UrlFilter selectByPrimaryKey(String urlId);
-
-    int updateByPrimaryKeySelective(UrlFilter record);
+    List<UrlFilter> selectByPrimaryKey(String filterId);
 
     int updateByPrimaryKey(UrlFilter record);
 }

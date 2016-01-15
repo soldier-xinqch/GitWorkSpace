@@ -63,15 +63,15 @@
         <!-- 由于mapperLocation参数类型是数组所以可以设多个 -->
         	<list>
         		<value>classpath:com/xinqch/mapping/*.xml</value>
+        		<value>classpath:com/xinqch/shiro/*.xml</value>
         	</list>
         </property>
     </bean>
     <!-- 配置扫描器 -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <!-- 扫描com.xinqch.**这个包以及它的子包下的所有映射接口类  basePackage 参数类型是string类型的所以可以用逗号连接却不可以用list-->
-        <property name="basePackage" value="com.xinqch.mapper" />
+        <property name="basePackage" value="com.xinqch.shiro.mapper;com.xinqch.mapper" />
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
+        <property name="markerInterface" value="com.xinqch.common.CommonSqlMapper"></property>
     </bean>
-	
-
 </beans>

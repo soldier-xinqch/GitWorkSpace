@@ -1,82 +1,72 @@
 package com.xinqch.shiro.pojo;
 
+import java.util.Date;
+
 import com.xinqch.common.CommonEntity;
-/**
- *  url连接访问拦截实体  持久进db中
- * @author xinqch
- *
- */
+
 public class UrlFilter extends CommonEntity {
-	/*记录ID**/
-    private String urlId;
-    /*url名称/描述   **/
-    private String urlName;
-    /*url地址   **/
-    private String urlAdress;
-    /*所需要的角色ID，可省略  **/
-    private String urlRolesId;
-    /*所需要的角色，可省略  **/
-    private String urlRoles;
-    /*所需要的权限，可省略 **/
-    private String permissions;
-    /* shiro的验证机制 是anon 还是其他的验证拦截 */
-    private String shiroValid;
+	
+    private String filterId;
+
+    private String filterUrl;
+
+    private String filterShiroPermissions;
 
     private static final long serialVersionUID = 1L;
 
-    public String getUrlId() {
-        return urlId;
+    public String getFilterId() {
+        return filterId;
     }
 
-    public void setUrlId(String urlId) {
-        this.urlId = urlId == null ? null : urlId.trim();
+    public void setFilterId(String filterId) {
+        this.filterId = filterId == null ? null : filterId.trim();
     }
 
-    public String getUrlName() {
-        return urlName;
+    public String getFilterUrl() {
+        return filterUrl;
     }
 
-    public void setUrlName(String urlName) {
-        this.urlName = urlName == null ? null : urlName.trim();
+    public void setFilterUrl(String filterUrl) {
+        this.filterUrl = filterUrl == null ? null : filterUrl.trim();
     }
 
-    public String getUrlAdress() {
-        return urlAdress;
+    public String getFilterShiroPermissions() {
+        return filterShiroPermissions;
     }
 
-    public void setUrlAdress(String urlAdress) {
-        this.urlAdress = urlAdress == null ? null : urlAdress.trim();
+    public void setFilterShiroPermissions(String filterShiroPermissions) {
+        this.filterShiroPermissions = filterShiroPermissions == null ? null : filterShiroPermissions.trim();
     }
 
-    public String getUrlRolesId() {
-        return urlRolesId;
+    public String getCreateUser() {
+        return createUser;
     }
 
-    public void setUrlRolesId(String urlRolesId) {
-        this.urlRolesId = urlRolesId == null ? null : urlRolesId.trim();
+    public void setCreateUser(String createUser) {
+        this.createUser = createUser == null ? null : createUser.trim();
     }
 
-    public String getUrlRoles() {
-        return urlRoles;
+    public Date getCreateTime() {
+        return createTime;
     }
 
-    public void setUrlRoles(String urlRoles) {
-        this.urlRoles = urlRoles == null ? null : urlRoles.trim();
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 
-    public String getPermissions() {
-        return permissions;
+    public String getModifyUser() {
+        return modifyUser;
     }
 
-    public void setPermissions(String permissions) {
-        this.permissions = permissions == null ? null : permissions.trim();
+    public void setModifyUser(String modifyUser) {
+        this.modifyUser = modifyUser == null ? null : modifyUser.trim();
     }
 
-    public String getShiroValid() {
-        return shiroValid;
+    public Date getModifyTime() {
+        return modifyTime;
     }
 
-    public void setShiroValid(String shiroValid) {
-        this.shiroValid = shiroValid == null ? null : shiroValid.trim();
+    public void setModifyTime(Date modifyTime) {
+        this.modifyTime = modifyTime;
     }
 }

@@ -2,9 +2,10 @@ package com.xinqch.mapper;
 
 import org.apache.ibatis.annotations.Param;
 
+import com.xinqch.common.CommonSqlMapper;
 import com.xinqch.model.User;
 
-public interface UserMapper {
+public interface UserMapper extends CommonSqlMapper {
     int deleteByPrimaryKey(String id);
 
     int insert(User record);
