@@ -17,9 +17,8 @@ public class ShiroFactory extends ShiroFilterFactoryBean{
 	
 	@Autowired
 	private ShiroManager shiromanager;
-	@Autowired
-	private UrlFilterService urlFilterService;
-	
+//	@Autowired
+//	private UrlFilterService urlFilterService;
 	@Autowired
 	private ShiroValidFilter shiroValidFilter;
 	
@@ -40,7 +39,7 @@ public class ShiroFactory extends ShiroFilterFactoryBean{
 		loginUrl = "/";
 		successUrl = "/into/loginHome";
 		
-		
+//		Map<String,String> map = urlFilterService.findAllUrlFilters();
 		this.setSecurityManager(shiromanager);
 		this.setLoginUrl(loginUrl);
 		this.setSuccessUrl(successUrl);
