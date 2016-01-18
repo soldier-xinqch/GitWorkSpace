@@ -17,7 +17,6 @@ public class UserServiceImplTest {
 	
 	@Test
 	public void testGetUserById() throws Exception {
-		System.out.println();
 		System.out.println(userMapper.selectByPrimaryKey("1"));
 	}
 }

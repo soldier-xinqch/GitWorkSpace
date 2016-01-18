@@ -3,7 +3,7 @@ package com.xinqch.shiro.service;
 import java.util.List;
 import java.util.Map;
 
-import com.xinqch.shiro.pojo.UrlFilter;
+import com.xinqch.shiro.model.UrlFilter;
 
 public interface UrlFilterService {
 	

@@ -3,7 +3,6 @@ package com.xinqch.shiro.service.impl;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
-import java.util.UUID;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,8 +11,9 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.xinqch.shiro.mapper.UrlFilterMapper;
-import com.xinqch.shiro.pojo.UrlFilter;
+import com.xinqch.shiro.model.UrlFilter;
 import com.xinqch.shiro.service.UrlFilterService;
+import com.xinqch.util.CommonUtil;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations="classpath:testConfig/spring-context.xml")
@@ -26,14 +26,13 @@ public class UrlFilterServiceImplTest {
 	@Test
 	public void testCreateUrlFilter() throws Exception {
 		UrlFilter urlFilter = new UrlFilter();
-		urlFilter.setFilterId(UUID.randomUUID().toString());
+		urlFilter.setFilterId(CommonUtil.getUUID());
 		urlFilter.setFilterUrl("/into/loginIndex");
 		urlFilter.setFilterShiroPermissions("anon");
 		urlFilter.setDelFlag(false);
 		urlFilter.setCreateTime(new Date());
 		urlFilter.setCreateUser("soldier");
-//		urlFilterService.createUrlFilter(urlFilter);
-		urlFilterMapper.insert(urlFilter);
+		urlFilterService.createUrlFilter(urlFilter);
 	}
 
 	@Test

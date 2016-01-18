@@ -1,7 +1,5 @@
 package com.xinqch.shiro.mapper;
 
-import java.util.List;
-
 import com.xinqch.shiro.model.UrlFilter;
 
 public interface UrlFilterMapper {
@@ -11,7 +9,7 @@ public interface UrlFilterMapper {
 
     int insertSelective(UrlFilter record);
 
-    List<UrlFilter> selectByPrimaryKey(String filterId);
+    UrlFilter selectByPrimaryKey(String filterId);
 
     int updateByPrimaryKeySelective(UrlFilter record);
 

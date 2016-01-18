@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xinqch.shiro.mapper.UrlFilterMapper" >
+  <resultMap id="BaseResultMap" type="com.xinqch.shiro.model.UrlFilter" >
+    <id column="filter_id" property="filterId" jdbcType="VARCHAR" />
+    <result column="filter_url" property="filterUrl" jdbcType="VARCHAR" />
+    <result column="filter_shiro_permissions" property="filterShiroPermissions" jdbcType="VARCHAR" />
+    <result column="del_flag" property="delFlag" jdbcType="BIT" />
+    <result column="create_user" property="createUser" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="modify_user" property="modifyUser" jdbcType="VARCHAR" />
+    <result column="modify_time" property="modifyTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    filter_id, filter_url, filter_shiro_permissions, del_flag, create_user, create_time, 
+    modify_user, modify_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from url_filter
+    where filter_id = #{filterId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from url_filter
+    where filter_id = #{filterId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.xinqch.shiro.model.UrlFilter" >
+    insert into url_filter (filter_id, filter_url, filter_shiro_permissions, 
+      del_flag, create_user, create_time, 
+      modify_user, modify_time)
+    values (#{filterId,jdbcType=VARCHAR}, #{filterUrl,jdbcType=VARCHAR}, #{filterShiroPermissions,jdbcType=VARCHAR}, 
+      #{delFlag,jdbcType=BIT}, #{createUser,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{modifyUser,jdbcType=VARCHAR}, #{modifyTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xinqch.shiro.model.UrlFilter" >
+    insert into url_filter
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="filterId != null" >
+        filter_id,
+      </if>
+      <if test="filterUrl != null" >
+        filter_url,
+      </if>
+      <if test="filterShiroPermissions != null" >
+        filter_shiro_permissions,
+      </if>
+      <if test="delFlag != null" >
+        del_flag,
+      </if>
+      <if test="createUser != null" >
+        create_user,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="modifyUser != null" >
+        modify_user,
+      </if>
+      <if test="modifyTime != null" >
+        modify_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="filterId != null" >
+        #{filterId,jdbcType=VARCHAR},
+      </if>
+      <if test="filterUrl != null" >
+        #{filterUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="filterShiroPermissions != null" >
+        #{filterShiroPermissions,jdbcType=VARCHAR},
+      </if>
+      <if test="delFlag != null" >
+        #{delFlag,jdbcType=BIT},
+      </if>
+      <if test="createUser != null" >
+        #{createUser,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyUser != null" >
+        #{modifyUser,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyTime != null" >
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xinqch.shiro.model.UrlFilter" >
+    update url_filter
+    <set >
+      <if test="filterUrl != null" >
+        filter_url = #{filterUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="filterShiroPermissions != null" >
+        filter_shiro_permissions = #{filterShiroPermissions,jdbcType=VARCHAR},
+      </if>
+      <if test="delFlag != null" >
+        del_flag = #{delFlag,jdbcType=BIT},
+      </if>
+      <if test="createUser != null" >
+        create_user = #{createUser,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyUser != null" >
+        modify_user = #{modifyUser,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyTime != null" >
+        modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where filter_id = #{filterId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xinqch.shiro.model.UrlFilter" >
+    update url_filter
+    set filter_url = #{filterUrl,jdbcType=VARCHAR},
+      filter_shiro_permissions = #{filterShiroPermissions,jdbcType=VARCHAR},
+      del_flag = #{delFlag,jdbcType=BIT},
+      create_user = #{createUser,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      modify_user = #{modifyUser,jdbcType=VARCHAR},
+      modify_time = #{modifyTime,jdbcType=TIMESTAMP}
+    where filter_id = #{filterId,jdbcType=VARCHAR}
+  </update>
+</mapper>

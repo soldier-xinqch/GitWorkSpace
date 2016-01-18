@@ -1,11 +1,9 @@
 package com.xinqch.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
-import com.xinqch.common.CommonEntity;
-
-public class User  extends CommonEntity  {
-	
+public class User implements Serializable {
     private String id;
 
     private String realName;

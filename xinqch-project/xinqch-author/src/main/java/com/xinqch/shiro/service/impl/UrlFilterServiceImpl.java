@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
 import com.xinqch.shiro.mapper.UrlFilterMapper;
-import com.xinqch.shiro.pojo.UrlFilter;
+import com.xinqch.shiro.model.UrlFilter;
 import com.xinqch.shiro.service.UrlFilterService;
 
 @Service("urlFilterService")

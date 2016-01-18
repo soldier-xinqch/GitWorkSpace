@@ -4,7 +4,6 @@ import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
-import org.apache.shiro.authc.SimpleAuthenticationInfo;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
@@ -12,17 +11,13 @@ import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.subject.Subject;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
-import com.xinqch.model.User;
-import com.xinqch.service.UserService;
 
 @Component("loginRealm")
 public class LoginRealm extends AuthorizingRealm {
 	
-	@Autowired
-	private UserService userService;
+	/*@Autowired
+	private UserService userService;*/
 
 	/** 
      * 为当前登录的Subject授予角色和权限 
@@ -76,12 +71,12 @@ public class LoginRealm extends AuthorizingRealm {
         //此处无需比对,比对的逻辑Shiro会做,我们只需返回一个和令牌相关的正确的验证信息  
         //说白了就是第一个参数填登录用户名,第二个参数填合法的登录密码(可以是从数据库中取到的,本例中为了演示就硬编码了)  
         //这样一来,在随后的登录页面上就只有这里指定的用户和密码才能通过验证  
-       User user = userService.loginValid(token.getUsername(), token.getPassword().toString());
-       if(null != user){
-    	 AuthenticationInfo authcInfo = new SimpleAuthenticationInfo(token.getUsername(), token.getUsername(), this.getName());  
-         this.setSession("loginUser", token.getUsername());  
-         return authcInfo;  
-       }
+//       User user = userService.loginValid(token.getUsername(), token.getPassword().toString());
+//       if(null != user){
+//    	 AuthenticationInfo authcInfo = new SimpleAuthenticationInfo(token.getUsername(), token.getUsername(), this.getName());  
+//         this.setSession("loginUser", token.getUsername());  
+//         return authcInfo;  
+//       }
 //        if("jadyer".equals(token.getUsername())){  
 //            AuthenticationInfo authcInfo = new SimpleAuthenticationInfo("jadyer", "jadyer", this.getName());  
 //            this.setSession("currentUser", "jadyer");  

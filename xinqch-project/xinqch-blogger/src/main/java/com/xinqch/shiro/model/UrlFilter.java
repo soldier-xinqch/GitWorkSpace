@@ -1,16 +1,24 @@
-package com.xinqch.shiro.pojo;
+package com.xinqch.shiro.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
-import com.xinqch.common.CommonEntity;
-
-public class UrlFilter extends CommonEntity {
-	
+public class UrlFilter implements Serializable {
     private String filterId;
 
     private String filterUrl;
 
     private String filterShiroPermissions;
+
+    private Boolean delFlag;
+
+    private String createUser;
+
+    private Date createTime;
+
+    private String modifyUser;
+
+    private Date modifyTime;
 
     private static final long serialVersionUID = 1L;
 
@@ -36,6 +44,14 @@ public class UrlFilter extends CommonEntity {
 
     public void setFilterShiroPermissions(String filterShiroPermissions) {
         this.filterShiroPermissions = filterShiroPermissions == null ? null : filterShiroPermissions.trim();
+    }
+
+    public Boolean getDelFlag() {
+        return delFlag;
+    }
+
+    public void setDelFlag(Boolean delFlag) {
+        this.delFlag = delFlag;
     }
 
     public String getCreateUser() {
