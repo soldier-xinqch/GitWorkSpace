@@ -10,13 +10,15 @@ import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.xinqch.shiro.service.UrlFilterService;
+
 @Component("shiroFilter")
 public class ShiroFactory extends ShiroFilterFactoryBean{
 	
 	@Autowired
 	private ShiroManager shiromanager;
-//	@Autowired
-//	private UrlFilterService urlFilterService;
+	@Autowired
+	private UrlFilterService urlFilterService;
 	@Autowired
 	private ShiroValidFilter shiroValidFilter;
 	
@@ -36,13 +38,12 @@ public class ShiroFactory extends ShiroFilterFactoryBean{
 	public void setFactoryParams(){
 		loginUrl = "/";
 		successUrl = "/into/loginHome";
-		
-//		Map<String,String> map = urlFilterService.findAllUrlFilters();
+		Map<String,String> map = urlFilterService.findAllUrlFilters();
 		this.setSecurityManager(shiromanager);
 		this.setLoginUrl(loginUrl);
 		this.setSuccessUrl(successUrl);
 		this.setUnauthorizedUrl(unauthorizedUrl);
-		this.setFilterChainDefinitionMap(tempUrlFilter());
+		this.setFilterChainDefinitionMap(map);
 		//url 拦截
 		Map<String,Filter> filterMap = new HashMap<String,Filter>();
 		filterMap.put("loginFilter", shiroValidFilter);
