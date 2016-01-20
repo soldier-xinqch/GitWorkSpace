@@ -54,6 +54,6 @@ public class UrlFilterServiceImpl implements UrlFilterService {
 	@Override
 	public UrlFilter findUrlFilterById(String urlFilterId) {
 		List<UrlFilter> urlFilters = urlFilterMapper.selectByPrimaryKey(urlFilterId);
-		return !CollectionUtils.isEmpty(urlFilters)&&urlFilters.size()>1?urlFilters.get(0):null;
+		return CollectionUtils.isEmpty(urlFilters)&&urlFilters.size()<1?null:urlFilters.get(0);
 	}
 }

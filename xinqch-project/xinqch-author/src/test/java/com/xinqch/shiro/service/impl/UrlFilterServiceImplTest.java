@@ -34,10 +34,17 @@ public class UrlFilterServiceImplTest {
 		urlFilter.setCreateUser("soldier");
 		urlFilterService.createUrlFilter(urlFilter);
 	}
+	
+	@Test
+	public void testModifyUrl1Filter() throws Exception {
+		
+		List<UrlFilter> entity = urlFilterMapper.selectByPrimaryKey("6e8095a0b9794385b03fbb9b9ce6c3f7");
+		System.out.println(entity);
+	}
 
 	@Test
 	public void testModifyUrlFilter() throws Exception {
-		UrlFilter urlFilter = urlFilterService.findUrlFilterById("");
+		UrlFilter urlFilter = urlFilterService.findUrlFilterById("6e8095a0b9794385b03fbb9b9ce6c3f7");
 		urlFilter.setModifyTime(new Date());
 		urlFilter.setModifyUser("xinqch");
 		urlFilterService.modifyUrlFilter(urlFilter);

@@ -16,6 +16,7 @@
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.1.xsd
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.2.xsd">
 	
+
 	<!-- dbcp 数据源 -->
 	<bean id="dbcpDateSource" class="org.apache.commons.dbcp.BasicDataSource"
 		destroy-method="close">
@@ -70,10 +71,8 @@
     <!-- 配置扫描器 -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <!-- 扫描com.xinqch.**这个包以及它的子包下的所有映射接口类  basePackage 参数类型是string类型的所以可以用逗号连接却不可以用list-->
-         <property name="basePackage" value="com.xinqch.shiro.mapper;com.xinqch.mapper" />
+        <property name="basePackage" value="com.xinqch.shiro.mapper;com.xinqch.mapper" />
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
-        <property name="markerInterface" value="com.xinqch.common.CommonSqlMapper"></property>
+       <!--  <property name="markerInterface" value="com.xinqch.common.CommonSqlMapper"></property> -->
     </bean>
-	
-
 </beans>
