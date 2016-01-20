@@ -12,14 +12,13 @@ import org.springframework.stereotype.Component;
 
 @Component("shiroFilter")
 public class ShiroFactory extends ShiroFilterFactoryBean{
-//	
+	
 	@Autowired
 	private ShiroManager shiromanager;
-	
-//	@Autowired
-//	private ShiroValidFilter shiroValidFilter;
 //	@Autowired
 //	private UrlFilterService urlFilterService;
+	@Autowired
+	private ShiroValidFilter shiroValidFilter;
 	
 	private String loginUrl;
 	private	String successUrl;
@@ -27,10 +26,10 @@ public class ShiroFactory extends ShiroFilterFactoryBean{
 	
 	private Map<String,String> tempUrlFilter(){
 		Map<String,String> map = new HashMap<String,String>();
-//		map.put("/into/loginIndex", "anon");
-//		map.put("/into/loginHome", "anon");
-//		map.put("/into/**", "authc");
- 		return map;
+		map.put("/into/loginIndex", "anon");
+		map.put("/into/loginHome", "anon");
+		map.put("/into/**", "authc");
+		return map;
 	}
 	
 	@PostConstruct 
@@ -45,10 +44,9 @@ public class ShiroFactory extends ShiroFilterFactoryBean{
 		this.setUnauthorizedUrl(unauthorizedUrl);
 		this.setFilterChainDefinitionMap(tempUrlFilter());
 		//url 拦截
-//		Map<String,Filter> filterMap = new HashMap<String,Filter>();
-//		filterMap.put("loginFilter", shiroValidFilter);
-//		this.setFilters(filterMap);
+		Map<String,Filter> filterMap = new HashMap<String,Filter>();
+		filterMap.put("loginFilter", shiroValidFilter);
+		this.setFilters(filterMap);
 	}
 	
 }
-
