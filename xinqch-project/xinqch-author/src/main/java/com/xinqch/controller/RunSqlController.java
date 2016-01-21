@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.xinqch.util.RunSqlUtil;
 
 @Controller
-@RequestMapping("into")
+@RequestMapping("sql")
 public class RunSqlController {
 
 	@Autowired

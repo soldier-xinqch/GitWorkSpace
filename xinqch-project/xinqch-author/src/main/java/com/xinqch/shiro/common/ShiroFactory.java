@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.xinqch.shiro.service.UrlFilterService;
+import com.xinqch.util.PropertiesUtils;
 
 @Component("shiroFilter")
 public class ShiroFactory extends ShiroFilterFactoryBean{
@@ -28,8 +29,9 @@ public class ShiroFactory extends ShiroFilterFactoryBean{
 	
 	@PostConstruct 
 	public void setFactoryParams(){
-		loginUrl = "/";
-		successUrl = "/into/loginHome";
+		loginUrl = (String) PropertiesUtils.getPropertyParams("loginUrl");
+		successUrl = (String) PropertiesUtils.getPropertyParams("successUrl");
+		unauthorizedUrl= (String) PropertiesUtils.getPropertyParams("unauthorizedUrl");
 		String urlFilters = urlFilterService.getAllUrlFilters();
 		this.setSecurityManager(shiromanager);
 		this.setLoginUrl(loginUrl);
