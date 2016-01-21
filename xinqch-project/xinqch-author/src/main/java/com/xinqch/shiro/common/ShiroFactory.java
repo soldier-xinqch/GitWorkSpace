@@ -30,12 +30,12 @@ public class ShiroFactory extends ShiroFilterFactoryBean{
 	public void setFactoryParams(){
 		loginUrl = "/";
 		successUrl = "/into/loginHome";
-		Map<String,String> map = urlFilterService.findAllUrlFilters();
+		String urlFilters = urlFilterService.getAllUrlFilters();
 		this.setSecurityManager(shiromanager);
 		this.setLoginUrl(loginUrl);
 		this.setSuccessUrl(successUrl);
 		this.setUnauthorizedUrl(unauthorizedUrl);
-		this.setFilterChainDefinitionMap(map);
+		this.setFilterChainDefinitions(urlFilters);
 		//url 拦截
 		Map<String,Filter> filterMap = new HashMap<String,Filter>();
 		filterMap.put("loginFilter", shiroValidFilter);

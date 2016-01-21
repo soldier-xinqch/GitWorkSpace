@@ -34,6 +34,6 @@
 	<!--  导入h2数据库 服务数据   -->
 	<import resource="spring-h2.xml"/>
 	<!-- 安全组件 security  -->
-	<!-- <import resource="spring-shiro.xml"/>  -->
+	<import resource="spring-shiro.xml"/> 
 
 </beans>

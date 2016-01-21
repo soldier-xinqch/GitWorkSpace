@@ -18,4 +18,6 @@ public interface UrlFilterService {
 	public UrlFilter findUrlFilterById(String urlFilterId);
 	
 	public Map<String,String> findAllUrlFilters();
+	
+	public String getAllUrlFilters();
 }

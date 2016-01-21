@@ -50,10 +50,22 @@ public class UrlFilterServiceImpl implements UrlFilterService {
 		}
 		return map;
 	}
-
+	@Override
+	public String getAllUrlFilters() {
+		String urlFilterStr = "";
+		List<UrlFilter> urlFilters = urlFilterMapper.selectByPrimaryKey(null);
+		if(!CollectionUtils.isEmpty(urlFilters)){
+			for (UrlFilter urlFilter : urlFilters) {
+				urlFilterStr += urlFilter.getFilterUrl()+"="+urlFilter.getFilterShiroPermissions()+"\n";
+			}
+		}
+		return urlFilterStr;
+	}
+	
 	@Override
 	public UrlFilter findUrlFilterById(String urlFilterId) {
 		List<UrlFilter> urlFilters = urlFilterMapper.selectByPrimaryKey(urlFilterId);
 		return CollectionUtils.isEmpty(urlFilters)&&urlFilters.size()<1?null:urlFilters.get(0);
 	}
+
 }

@@ -27,8 +27,8 @@ public class UrlFilterServiceImplTest {
 	public void testCreateUrlFilter() throws Exception {
 		UrlFilter urlFilter = new UrlFilter();
 		urlFilter.setFilterId(CommonUtil.getUUID());
-		urlFilter.setFilterUrl("/into/loginIndex");
-		urlFilter.setFilterShiroPermissions("anon");
+		urlFilter.setFilterUrl("/into/**");
+		urlFilter.setFilterShiroPermissions("authc");
 		urlFilter.setDelFlag(false);
 		urlFilter.setCreateTime(new Date());
 		urlFilter.setCreateUser("soldier");
@@ -75,5 +75,11 @@ public class UrlFilterServiceImplTest {
 	public void testFindUrlFilterById() throws Exception {
 		System.out.println(urlFilterService.findUrlFilterById(""));
 	}
+
+	@Test
+	public void testgetUrlFilterById() throws Exception {
+		System.out.println(urlFilterService.getAllUrlFilters());
+	}
+
 
 }
