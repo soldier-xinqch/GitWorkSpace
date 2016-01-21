@@ -26,14 +26,6 @@ public class ShiroFactory extends ShiroFilterFactoryBean{
 	private	String successUrl;
 	private	String unauthorizedUrl;
 	
-	private Map<String,String> tempUrlFilter(){
-		Map<String,String> map = new HashMap<String,String>();
-		map.put("/into/loginIndex", "anon");
-		map.put("/into/loginHome", "anon");
-		map.put("/into/**", "authc");
-		return map;
-	}
-	
 	@PostConstruct 
 	public void setFactoryParams(){
 		loginUrl = "/";
