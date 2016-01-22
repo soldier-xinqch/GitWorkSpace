@@ -10,6 +10,7 @@
     <module>xinqch-author</module>
     <module>xinqch-blogger</module>
     <module>xinqch-util</module>
+    <module>xinqch-task</module>
   </modules>
   <!-- 依赖版本号声明  -->
   <properties>
