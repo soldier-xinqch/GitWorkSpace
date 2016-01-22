@@ -279,6 +279,12 @@
 			<version>1.9</version>
 		</dependency>
 		<!-- web Service end -->
+		<!--  处理execl 和 word   -->
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi</artifactId>
+			<version>3.13</version>
+		</dependency>
 	
 		<!-- 生成二维码，条形码 -->
 		<dependency>
