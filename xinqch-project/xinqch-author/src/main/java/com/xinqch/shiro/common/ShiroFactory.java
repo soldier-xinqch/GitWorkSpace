@@ -33,10 +33,10 @@ public class ShiroFactory extends ShiroFilterFactoryBean{
 		successUrl = (String) PropertiesUtils.getPropertyParams("successUrl");
 		unauthorizedUrl= (String) PropertiesUtils.getPropertyParams("unauthorizedUrl");
 		String urlFilters = urlFilterService.getAllUrlFilters();
-		this.setSecurityManager(shiromanager);
 		this.setLoginUrl(loginUrl);
 		this.setSuccessUrl(successUrl);
 		this.setUnauthorizedUrl(unauthorizedUrl);
+		this.setSecurityManager(shiromanager);
 		this.setFilterChainDefinitions(urlFilters);
 		//url 拦截
 		Map<String,Filter> filterMap = new HashMap<String,Filter>();
