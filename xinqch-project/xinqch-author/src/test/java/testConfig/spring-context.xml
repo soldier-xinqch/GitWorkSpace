@@ -11,13 +11,22 @@
 
 	<!-- 注解支持 -->
 	<context:annotation-config />
+	<!-- 将多个配置文件读取到容器中，交给Spring管理 -->
+	<bean id="propertyConfigurer" class="com.xinqch.util.PropertiesUtils"> 
+		<property name="locations"> 
+		<!-- 这里支持多种寻址方式：classpath和file 推荐使用file的方式引入，这样可以将配置和代码分离  -->
+			<list>  
+				<value>classpath:config/db.properties</value> 
+			</list> 
+		</property> 
+	</bean>
 	<!-- 开启自动扫描 -->
 	<!-- 使用Annotation自动注册Bean，解决事务失效问题，在主容器中不扫描以@Controller注解，在SpringMVC中只扫描@Controller注解 -->
 	<context:component-scan base-package="com.xinqch">
 		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
 	</context:component-scan>
 	<!-- 就一行代码 真帅 -->
-	<context:property-placeholder location="classpath:testConfig/db.properties" />
+	<!-- <context:property-placeholder location="classpath:testConfig/db.properties" /> -->
 	<!-- 导入数据源配置文件  -->
 	<import resource="spring-db.xml" />
 </beans>

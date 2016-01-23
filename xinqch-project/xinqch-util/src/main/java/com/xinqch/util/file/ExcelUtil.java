@@ -25,6 +25,11 @@ import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.hssf.util.HSSFColor;
 import org.apache.poi.ss.formula.functions.T;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 /**
  *  关于poi.jar对execl的简单解析
@@ -38,29 +43,38 @@ public class ExcelUtil {
 	 /**
 	  * excel文件导入
 	  * @param execlFile 文件路径
-	  * @param sheetIndex 工作表序号
+	  * @param string 工作表序号
 	  * @return
 	  */
-	 public List<Object> importExcel(String execlFile,int sheetIndex){
+	 public static List<Object> importExcel(String execlFile,int steetIndex){
 		 List<Object> importResult = new ArrayList<Object>();
-		 HSSFWorkbook workbook =null;
+		 Workbook workbook =null;
+		 FileInputStream in  = null;
 		 try {
-			workbook = new HSSFWorkbook(new FileInputStream(execlFile));
-			HSSFSheet sheet = workbook.getSheetAt(sheetIndex);
+			 if(null != execlFile){
+				 in = new FileInputStream(execlFile);
+				 String[] fileFormat = execlFile.split("\\.");
+				 if(fileFormat.length>1){
+					 workbook = fileFormat[fileFormat.length-1].equals("xls")?new HSSFWorkbook(in):
+						 fileFormat[fileFormat.length-1].equals("xlsx")?new XSSFWorkbook(in):null;
+				 }
+			 }
+			if(null == workbook)return null;
+			Sheet sheet = workbook.getSheet(workbook.getSheetName(steetIndex));
 			// 获取数据总行数，编号是从0开始的
 	        int rowcount = sheet.getLastRowNum()+1;
 	        if (rowcount < 1) return null;
 	        // 逐行读取数据
 	        for (int i = 0; i < rowcount; i++) {
 	            // 获取行对象
-	            HSSFRow row = sheet.getRow(i);
+	            Row row = sheet.getRow(i);
 	            if (row != null) {
 	                List<Object> rowData = new ArrayList<Object>();
 	                // 获取本行中单元格个数
 	                int column = row.getLastCellNum();
 	                // 获取本行中各单元格的数据
 	                for (int cindex = 0; cindex < column; cindex++) {
-	                    HSSFCell cell = row.getCell(cindex);
+	                    Cell cell = row.getCell(cindex);
 	                    // 获得指定单元格中的数据
 	                    Object cellstr = getCellString(cell);
 	                    rowData.add(cellstr);
@@ -81,7 +95,7 @@ public class ExcelUtil {
 	 }
     
     /** 获取单元格中的内容 ,该方法用于解析各种形式的数据*/
-    private Object getCellString(HSSFCell cell) {
+    private static Object getCellString(Cell cell) {
         Object result = null;
         if (cell != null) {
             int cellType = cell.getCellType();
@@ -258,5 +272,10 @@ public class ExcelUtil {
         comment.setAuthor("leno");
 		return comment;  
     }
+    
+    public static void main(String[] args) {
+    	
+    System.out.println(ExcelUtil.importExcel("C:\\Users\\xinch\\Desktop\\test.xlsx", 0));
+	}
     
 }

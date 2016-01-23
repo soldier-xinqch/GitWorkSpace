@@ -24,6 +24,8 @@
 		<mybatis.version>3.2.8</mybatis.version>
 		<!-- mysql版本号 -->
 		<mysql.version>5.1.6</mysql.version>
+		<!-- office 文档处理 -->
+		<poi.version>3.13</poi.version>
 	</properties>
   <dependencyManagement>
   	<dependencies>
@@ -280,12 +282,26 @@
 			<version>1.9</version>
 		</dependency>
 		<!-- web Service end -->
-		<!--  处理execl 和 word   -->
+		<!--  处理07版office之前导入 execl    -->
 		<dependency>
 			<groupId>org.apache.poi</groupId>
 			<artifactId>poi</artifactId>
-			<version>3.13</version>
+			<version>${poi.version}</version>
 		</dependency>
+		<!--  处理操作07版之后导入 -->
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml</artifactId>
+			<version>${poi.version}</version>
+		</dependency>
+		<!-- 处理操作word、ppt、viso、outlook -->
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-scratchpad</artifactId>
+			<version>${poi.version}</version>
+		</dependency>
+		
+		
 	
 		<!-- 生成二维码，条形码 -->
 		<dependency>
