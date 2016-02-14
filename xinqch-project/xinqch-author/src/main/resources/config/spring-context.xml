@@ -27,6 +27,17 @@
 	</context:component-scan>
 	<!-- 就一行代码 真帅 -->
 	<!-- <context:property-placeholder location="classpath:config/db.properties" /> -->
+	<!--加入Advisor 这样就可以监控spring bean的性能   -->
+	<!-- org\.noahx\.test\..*为正则表达式，javamelody会自动匹配bean中的类名，来决定都监控哪些bean的哪些方法 
+		我是监控了org.noahx.test下所有定义的spring bean的所有方法  -->
+	<bean id="facadeMonitoringAdvisor" class="net.bull.javamelody.MonitoringSpringAdvisor">
+	    <property name="pointcut">
+	        <bean class="org.springframework.aop.support.JdkRegexpMethodPointcut">
+	            <property name="pattern" value="com.xinqch.*" />
+	        </bean>
+	    </property>
+	</bean>
+	
 	<!-- 导入数据源配置文件  -->
 	<import resource="spring-db.xml" />
 	<!-- 导入mvc 配置文件 -->
@@ -35,5 +46,4 @@
 	<import resource="spring-h2.xml"/>
 	<!-- 安全组件 security  -->
 	<import resource="spring-shiro.xml"/> 
-
 </beans>

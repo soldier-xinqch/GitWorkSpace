@@ -45,6 +45,14 @@
 		<groupId>org.apache.poi</groupId>
 		<artifactId>poi-scratchpad</artifactId>
 	</dependency>
-	
+	<!-- 生成pdf  -->
+	<dependency>
+		<groupId>com.itextpdf</groupId>
+		<artifactId>itextpdf</artifactId>
+	</dependency>
+	<dependency>
+		<groupId>com.itextpdf</groupId>
+		<artifactId>itext-asian</artifactId>
+	</dependency>
   </dependencies>
 </project>

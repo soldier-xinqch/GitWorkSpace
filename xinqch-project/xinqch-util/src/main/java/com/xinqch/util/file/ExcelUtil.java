@@ -274,8 +274,8 @@ public class ExcelUtil {
     }
     
     public static void main(String[] args) {
-    	
-    System.out.println(ExcelUtil.importExcel("C:\\Users\\xinch\\Desktop\\test.xlsx", 0));
+	    System.out.println(ExcelUtil.importExcel("C:\\Users\\lzz\\Desktop\\test.xls", 0));
+	    System.out.println(ExcelUtil.importExcel("C:\\Users\\xinch\\Desktop\\test.xlsx", 0));
 	}
     
 }

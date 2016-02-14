@@ -160,6 +160,11 @@
 	    <groupId>com.github.bingoohuang</groupId>
 	    <artifactId>patchca</artifactId>
 	</dependency>
+	<!-- java 性能监控  -->
+	<dependency>
+		<groupId>net.bull.javamelody</groupId>
+		<artifactId>javamelody-core</artifactId>
+	</dependency>
   </dependencies>
   <build>
 	   <finalName>xinqch-author</finalName>

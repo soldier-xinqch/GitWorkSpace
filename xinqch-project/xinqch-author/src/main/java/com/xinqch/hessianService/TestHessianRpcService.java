@@ -1,4 +1,4 @@
-package com.xinqch.hessian.service;
+package com.xinqch.hessianService;
 
 public interface TestHessianRpcService {
 
