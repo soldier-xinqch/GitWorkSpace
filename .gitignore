@@ -1,0 +1,9 @@
+# git 忽略文件列表
+.project
+.settings/*
+*.zip
+targer/*
+.classpath
+.recommenders/*
+.metadata/*
+RemoteSystemsTempFiles/*
