@@ -17,7 +17,8 @@ public class UserDaoImpl implements IUserDao {
 	private SessionFactory sessionFactory;
 	
 	private Session getCurrentSession() {
-		return this.sessionFactory.getCurrentSession();
+		return this.sessionFactory.openSession();
+//		return this.sessionFactory.getCurrentSession();
 	}
 
 	@Override

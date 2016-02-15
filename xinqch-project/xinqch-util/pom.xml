@@ -54,5 +54,14 @@
 		<groupId>com.itextpdf</groupId>
 		<artifactId>itext-asian</artifactId>
 	</dependency>
+	<!-- json 处理  -->
+	<dependency>
+		<groupId>com.alibaba</groupId>
+		<artifactId>fastjson</artifactId>
+	</dependency>
+	<dependency>
+		<groupId>org.apache.httpcomponents</groupId>
+		<artifactId>httpclient</artifactId>
+	</dependency>
   </dependencies>
 </project>

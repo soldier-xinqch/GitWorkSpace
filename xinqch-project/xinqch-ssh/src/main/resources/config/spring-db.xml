@@ -17,18 +17,17 @@
 
 
 	<!-- 使用Druid连接池 -->
-	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"
+	 <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"
 		init-method="init" destroy-method="close"> 
 		<!-- 基本属性 url、user、password -->
-		<property name="url" value="jdbc:mysql://localhost:3306/xinqch" />
+		<property name="url" value="jdbc:mysql://127.0.0.1:3306/xinqch?useUnicode=true&amp;characterEncoding=UTF-8" />
 		<property name="username" value="root" />
 		<property name="password" value="xinqch" />
-		<property name="connectionProperties" value="com.mysql.jdbc.Driver"></property>
 
 		<!-- 配置初始化大小、最小、最大 -->
-		<property name="initialSize" value="0" />
+		<property name="initialSize" value="1" />
 		<!-- 连接池最小空闲 -->
-		<property name="minIdle" value="0" />
+		<property name="minIdle" value="1" />
 		<!-- 连接池最大使用连接数量 -->
 		<property name="maxActive" value="20" />
 		<!-- 配置获取连接等待超时的时间 -->
@@ -42,7 +41,7 @@
 		<property name="testWhileIdle" value="true" />
 		<property name="testOnBorrow" value="false" />
 		<property name="testOnReturn" value="false" />
-		<!-- 打开PSCache，并且指定每个连接上PSCache的大小 --> <!-- 如果用Oracle，则把poolPreparedStatements配置为true，mysql可以配置为false。分库分表较多的数据库，建议配置为false。 -->
+		<!-- 打开PSCache，并且指定每个连接上PSCache的大小 如果用Oracle，则把poolPreparedStatements配置为true，mysql可以配置为false。分库分表较多的数据库，建议配置为false。 -->
 		<property name="poolPreparedStatements" value="false" />
 		<property name="maxPoolPreparedStatementPerConnectionSize"
 			value="20" />
