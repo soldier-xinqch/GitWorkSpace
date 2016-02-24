@@ -1,6 +1,10 @@
 package com.xinqch.util.mail;
 
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 
@@ -82,11 +86,13 @@ public class MailUtils {
 	 */
 	public static MimeMessage createSimpleMail(Session session,
 			String sendFrom, String sendTo, String subject, Object obj,
-			String[] ccs, String[] bccs) throws Exception {
+			String[] ccs, String[] bccs,String saveEmailPath) throws Exception {
 		// 创建邮件对象
 		MimeMessage message = baseSendMessage(session, sendFrom, sendTo,subject, ccs, bccs);
 		// 邮件的文本内容
 		message.setContent(obj, "text/html;charset=UTF-8");
+		//保存发送的邮件
+		SaveSendMail(message, sendTo, saveEmailPath);
 		return message;
 	}
 
@@ -111,8 +117,7 @@ public class MailUtils {
 		message.setContent(mm);
 		message.saveChanges();
 		// 将创建好的邮件写入到E盘以文件的形式进行保存
-		saveEmailPath = saveEmailPath + sendTo + "_" + (new Date()).getTime()+ ".eml";
-		message.writeTo(new FileOutputStream(saveEmailPath));
+		SaveSendMail(message, sendTo, saveEmailPath);
 		// 返回创建好的邮件
 		return message;
 	}
@@ -125,20 +130,22 @@ public class MailUtils {
 	 * @param sendTo
 	 * @param subject
 	 * @param obj
+	 * @param imagePath 
 	 * @param imagePath
 	 * @param saveEmailPath
 	 * @throws Exception
 	 */
 	public static MimeMessage createAttachMail(Session session,
 			String sendFrom, String sendTo, String subject, Object obj,
-			String[] ccs, String[] bccs, List<String> attachFilePath, String saveEmailPath)
+			String[] ccs, String[] bccs, String imagePath, List<String> attachFilePath, String saveEmailPath)
 			throws Exception {
 		MimeMessage message = baseSendMessage(session, sendFrom, sendTo,subject, ccs, bccs);
-		MimeMultipart mp = setAttachmentMessage(obj, null, attachFilePath, false);
+		MimeMultipart mp = setAttachmentMessage(obj, imagePath, attachFilePath, false);
 		message.setContent(mp);
 		message.saveChanges();
 		// 将创建的Email写入到E盘存储
-		message.writeTo(new FileOutputStream(saveEmailPath));
+		//保存发送的邮件
+		SaveSendMail(message, sendTo, saveEmailPath);
 		// 返回生成的邮件
 		return message;
 	}
@@ -165,8 +172,8 @@ public class MailUtils {
 		MimeMultipart mp2 = setAttachmentMessage(obj, imagePath, attachFilePath, true);
 		message.setContent(mp2);
 		message.saveChanges();
-
-		message.writeTo(new FileOutputStream(saveEmailPath));
+		//保存发送的邮件
+		SaveSendMail(message, sendTo, saveEmailPath);
 		// 返回创建好的的邮件
 		return message;
 	}
@@ -247,18 +254,41 @@ public class MailUtils {
 		}
 		return mp;
 	}
-
-
-	public static void main(String[] args) {
-		String imagePath = "C://ppp/sss/js.jpg";
-		int last = imagePath.lastIndexOf("/");
-		String ss = imagePath.substring(last + 1, imagePath.length());
-		System.out.println(ss);
+	
+	private static void SaveSendMail(MimeMessage message,String sendTo,String saveEmailPath){
+		try {
+			File file = new File(saveEmailPath);
+			if(!file.exists()) file.mkdirs();
+			saveEmailPath = saveEmailPath + sendTo + "_" + (new Date()).getTime()+ ".eml";
+			message.writeTo(new FileOutputStream(saveEmailPath));
+		} catch (IOException | MessagingException e) {
+			e.printStackTrace();
+		}
 	}
-
-	//TODO  这个回家弄 将流保存到数据库或输出到文件
-	private void saveEmailToLocalDir(MimeMessage message, String saveFlag) {
-		// OutputStream os = new ;
-		// message.writeTo(os );
+	/**
+	 *  读取文件
+	 * @param file
+	 * @return
+	 */
+	public static byte[] getByte(File file){
+		byte[] b = null;
+		try {
+			if(null != file&&file.exists()){
+				FileInputStream in=new FileInputStream(file);  
+				ByteArrayOutputStream out=new ByteArrayOutputStream(1024);  
+				System.out.println("bytes available:"+in.available());  
+		        byte[] temp=new byte[1024];  
+		        int size=0;  
+		        while((size=in.read(temp))!=-1) {  
+		            out.write(temp,0,size);  
+		        }  
+		        in.close();  
+		        b=out.toByteArray();  
+		        System.out.println("bytes size got is:"+b.length);  
+			}
+		} catch (Exception e) {
+			System.out.println("邮件文件读取出错");
+		}
+		return b;
 	}
 }
