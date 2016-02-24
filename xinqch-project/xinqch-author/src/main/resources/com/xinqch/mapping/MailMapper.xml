@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xinqch.mapper.MailMapper" >
+  <resultMap id="BaseResultMap" type="com.xinqch.model.Mail" >
+    <id column="mail_id" property="mailId" jdbcType="VARCHAR" />
+    <result column="sendTo" property="sendto" jdbcType="VARCHAR" />
+    <result column="Cc" property="cc" jdbcType="VARCHAR" />
+    <result column="Bcc" property="bcc" jdbcType="VARCHAR" />
+    <result column="sendFrom" property="sendfrom" jdbcType="VARCHAR" />
+    <result column="subject" property="subject" jdbcType="VARCHAR" />
+    <result column="mail_content" property="mailContent" jdbcType="VARCHAR" />
+    <result column="mail_receipt" property="mailReceipt" jdbcType="VARCHAR" />
+    <result column="mail_signature" property="mailSignature" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="create_user" property="createUser" jdbcType="VARCHAR" />
+    <result column="update_user" property="updateUser" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    mail_id, sendTo, Cc, Bcc, sendFrom, subject, mail_content, mail_receipt, mail_signature, 
+    create_time, update_time, create_user, update_user
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from mail
+    where mail_id = #{mailId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from mail
+    where mail_id = #{mailId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.xinqch.model.Mail" >
+    insert into mail (mail_id, sendTo, Cc, 
+      Bcc, sendFrom, subject, 
+      mail_content, mail_receipt, mail_signature, 
+      create_time, update_time, create_user, 
+      update_user)
+    values (#{mailId,jdbcType=VARCHAR}, #{sendto,jdbcType=VARCHAR}, #{cc,jdbcType=VARCHAR}, 
+      #{bcc,jdbcType=VARCHAR}, #{sendfrom,jdbcType=VARCHAR}, #{subject,jdbcType=VARCHAR}, 
+      #{mailContent,jdbcType=VARCHAR}, #{mailReceipt,jdbcType=VARCHAR}, #{mailSignature,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{createUser,jdbcType=VARCHAR}, 
+      #{updateUser,jdbcType=VARCHAR})
+  </insert>
+ 
+  <update id="updateByPrimaryKey" parameterType="com.xinqch.model.Mail" >
+    update mail
+    set sendTo = #{sendto,jdbcType=VARCHAR},
+      Cc = #{cc,jdbcType=VARCHAR},
+      Bcc = #{bcc,jdbcType=VARCHAR},
+      sendFrom = #{sendfrom,jdbcType=VARCHAR},
+      subject = #{subject,jdbcType=VARCHAR},
+      mail_content = #{mailContent,jdbcType=VARCHAR},
+      mail_receipt = #{mailReceipt,jdbcType=VARCHAR},
+      mail_signature = #{mailSignature,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      create_user = #{createUser,jdbcType=VARCHAR},
+      update_user = #{updateUser,jdbcType=VARCHAR}
+    where mail_id = #{mailId,jdbcType=VARCHAR}
+  </update>
+</mapper>

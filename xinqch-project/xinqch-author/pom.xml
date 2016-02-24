@@ -164,6 +164,11 @@
 		<groupId>net.bull.javamelody</groupId>
 		<artifactId>javamelody-core</artifactId>
 	</dependency>
+	<!-- mail  -->
+	<dependency>
+		<groupId>javax.mail</groupId>
+		<artifactId>mail</artifactId>
+	</dependency>
   </dependencies>
   <build>
 	   <finalName>xinqch-author</finalName>

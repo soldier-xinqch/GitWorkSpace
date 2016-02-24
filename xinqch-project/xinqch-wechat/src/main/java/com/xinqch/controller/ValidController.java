@@ -40,6 +40,9 @@ public class ValidController {
 	private final String appid = "wx0c34b287aa04b15a";
 	private final String appsecret = "543f4a8de564bfb171dc70764ddf5b3f";
 	
+	private final String test_appid = "wx06bd4e1cb3ed0098";
+	private final String test_appsecret = "3f34f649b9b878eaf6cf03b076598bb1";
+	
 	/**
 	 *  获取accessToken
 	 * @return

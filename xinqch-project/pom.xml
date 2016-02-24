@@ -270,6 +270,12 @@
 				<artifactId>dom4j</artifactId>
 				<version>1.6.1</version>
 			</dependency>
+			<dependency>
+				<groupId>com.thoughtworks.xstream</groupId>
+				<artifactId>xstream</artifactId>
+				<version>1.4.8</version>
+			</dependency>
+
 			<!-- 上传组件包  -->
 			<dependency>
 				<groupId>commons-fileupload</groupId>
@@ -353,6 +359,12 @@
 				<groupId>com.itextpdf</groupId>
 				<artifactId>itext-asian</artifactId>
 				<version>5.2.0</version>
+			</dependency>
+			<!-- mail -->
+			<dependency>
+				<groupId>javax.mail</groupId>
+				<artifactId>mail</artifactId>
+				<version>1.4.7</version>
 			</dependency>
 			<!-- java 性能监控 -->
 			<dependency>

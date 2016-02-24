@@ -7,12 +7,12 @@ import java.util.Map;
 
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
-import org.dom4j.DocumentHelper;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
 
 public class WeChatReceiveUtils {
 	
+	@SuppressWarnings("unchecked")
 	public static String returnTextMessage(InputStream in){
 		Map<String,String> map = new HashMap<String,String>();
 		

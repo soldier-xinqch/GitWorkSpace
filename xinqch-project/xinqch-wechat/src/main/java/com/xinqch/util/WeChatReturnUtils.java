@@ -20,6 +20,18 @@ public class WeChatReturnUtils {
 		if(messageType.equals("text")){
 			setTextMsg(root);
 		}
+//		else if(){
+//			
+//		}else if(){
+//			
+//		}else if(){
+//			
+//		}else if(){
+//			
+//		}else if(){
+//			
+//		}
+		doc.setXMLEncoding("UTF-8");
 		return doc.asXML();
 	}
 	
