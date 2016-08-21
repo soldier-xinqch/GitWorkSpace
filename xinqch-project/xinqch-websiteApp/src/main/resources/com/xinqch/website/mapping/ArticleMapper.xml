@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xinqch.website.mapper.ArticleMapper" >
+  <resultMap id="BaseResultMap" type="com.xinqch.website.model.Article" >
+    <id column="ID" property="id" jdbcType="VARCHAR" />
+    <result column="ARTICLE_NAME" property="articleName" jdbcType="VARCHAR" />
+    <result column="ARTICLE_CONTEXT" property="articleContext" jdbcType="VARCHAR" />
+    <result column="ARTICLE_URL" property="articleUrl" jdbcType="VARCHAR" />
+    <result column="MODEL_ID" property="modelId" jdbcType="VARCHAR" />
+    <result column="CREATE_USER" property="createUser" jdbcType="VARCHAR" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="MODIFI_USER" property="modifiUser" jdbcType="VARCHAR" />
+    <result column="MODIFI_TIME" property="modifiTime" jdbcType="TIMESTAMP" />
+    <result column="DEL_STATUS" property="delStatus" jdbcType="TINYINT" />
+    <result column="COLUMN1" property="column1" jdbcType="VARCHAR" />
+    <result column="COLUMN2" property="column2" jdbcType="VARCHAR" />
+    <result column="COLUMN3" property="column3" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, ARTICLE_NAME, ARTICLE_CONTEXT, ARTICLE_URL, MODEL_ID, CREATE_USER, CREATE_TIME, 
+    MODIFI_USER, MODIFI_TIME, DEL_STATUS, COLUMN1, COLUMN2, COLUMN3
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from ARTICLE
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from ARTICLE
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insertSelective" parameterType="com.xinqch.website.model.Article" >
+    insert into ARTICLE
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="articleName != null" >
+        ARTICLE_NAME,
+      </if>
+      <if test="articleContext != null" >
+        ARTICLE_CONTEXT,
+      </if>
+      <if test="articleUrl != null" >
+        ARTICLE_URL,
+      </if>
+      <if test="modelId != null" >
+        MODEL_ID,
+      </if>
+      <if test="createUser != null" >
+        CREATE_USER,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="modifiUser != null" >
+        MODIFI_USER,
+      </if>
+      <if test="modifiTime != null" >
+        MODIFI_TIME,
+      </if>
+      <if test="delStatus != null" >
+        DEL_STATUS,
+      </if>
+      <if test="column1 != null" >
+        COLUMN1,
+      </if>
+      <if test="column2 != null" >
+        COLUMN2,
+      </if>
+      <if test="column3 != null" >
+        COLUMN3,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="articleName != null" >
+        #{articleName,jdbcType=VARCHAR},
+      </if>
+      <if test="articleContext != null" >
+        #{articleContext,jdbcType=VARCHAR},
+      </if>
+      <if test="articleUrl != null" >
+        #{articleUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="modelId != null" >
+        #{modelId,jdbcType=VARCHAR},
+      </if>
+      <if test="createUser != null" >
+        #{createUser,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifiUser != null" >
+        #{modifiUser,jdbcType=VARCHAR},
+      </if>
+      <if test="modifiTime != null" >
+        #{modifiTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="delStatus != null" >
+        #{delStatus,jdbcType=TINYINT},
+      </if>
+      <if test="column1 != null" >
+        #{column1,jdbcType=VARCHAR},
+      </if>
+      <if test="column2 != null" >
+        #{column2,jdbcType=VARCHAR},
+      </if>
+      <if test="column3 != null" >
+        #{column3,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xinqch.website.model.Article" >
+    update ARTICLE
+    <set >
+      <if test="articleName != null" >
+        ARTICLE_NAME = #{articleName,jdbcType=VARCHAR},
+      </if>
+      <if test="articleContext != null" >
+        ARTICLE_CONTEXT = #{articleContext,jdbcType=VARCHAR},
+      </if>
+      <if test="articleUrl != null" >
+        ARTICLE_URL = #{articleUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="modelId != null" >
+        MODEL_ID = #{modelId,jdbcType=VARCHAR},
+      </if>
+      <if test="createUser != null" >
+        CREATE_USER = #{createUser,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifiUser != null" >
+        MODIFI_USER = #{modifiUser,jdbcType=VARCHAR},
+      </if>
+      <if test="modifiTime != null" >
+        MODIFI_TIME = #{modifiTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="delStatus != null" >
+        DEL_STATUS = #{delStatus,jdbcType=TINYINT},
+      </if>
+      <if test="column1 != null" >
+        COLUMN1 = #{column1,jdbcType=VARCHAR},
+      </if>
+      <if test="column2 != null" >
+        COLUMN2 = #{column2,jdbcType=VARCHAR},
+      </if>
+      <if test="column3 != null" >
+        COLUMN3 = #{column3,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

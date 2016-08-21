@@ -14,7 +14,8 @@
 		<module>xinqch-ssh</module>
 		<module>xinqch-smvcsh</module>
     <module>xinqch-wechat</module>
-  </modules>
+    <module>xinqch-websiteApp</module>
+	</modules>
 	<!-- 依赖版本号声明 -->
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -376,6 +377,11 @@
 				<groupId>org.apache.httpcomponents</groupId>
 				<artifactId>httpclient</artifactId>
 				<version>4.5</version>
+			</dependency>
+			<dependency>
+			    <groupId>org.projectlombok</groupId>
+			    <artifactId>lombok</artifactId>
+			    <version>1.16.10</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
