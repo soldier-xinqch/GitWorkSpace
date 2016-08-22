@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="../../public/css/responsiveslides.css">
 <style type="text/css">
 #carousel{
-	height:500px;
+	height:500px; 
 }
 </style>
 <style>
