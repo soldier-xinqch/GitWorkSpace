@@ -22,14 +22,8 @@
 <script type="text/javascript" src="../../public/js/bootstrap.min.js"></script>
 
 <style type="text/css">
-#suspension-right{
-			width: 30px;
-            height: 80px;
-            background: #0000FF;
-            position: absolute;
-            right: 0;
-            top: 200;
-}
+/* 侧边栏滑块 */
+#suspension-right { width:225px;height:97px;position:absolute; right:0;background-color:red;}
 
 /* 响应式菜单 begin  */
 .equinav .navbar-brand {
@@ -113,37 +107,13 @@ a:hover{
 		});
 	});
 	
-	/* window.onscroll = function () {
-        var oDiv = document.getElementById('suspension-right');
-        //获取移动高度
-        var DivScroll = document.documentElement.scrollTop || document.body.scrollTop;     
-        //oDiv.style.top = (document.documentElement.clientHeight - oDiv.offsetHeight)/2 + DivScroll + 'px';
-        //调用传参，其中里面的参数是DIV要走的终点。也就是（可视高度-DIV高度）/2+移动高度
-        move(parseInt((document.documentElement.clientHeight - oDiv.offsetHeight) / 2 + DivScroll));    
-    };
-
-    var timer = null;
-    function move(end) {
-    	//首先，先关闭之前如果有开启的setInterval;
-        clearInterval(timer);      
-        timer = setInterval(function () {       
-            var oDiv = document.getElementById('#suspension-right');
-            //计算DIV要走的速度，DIV要走的速度就等于（终点-offsetTop高度）/缩放系数
-            var speed = (end - oDiv.offsetTop) / 5;   
-            //为了避免小数，将其取整
-            speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);  
-            //当DIV到达终点，则关闭setInterval;
-            if (oDiv.offsetTop == end) {        
-                clearInterval(timer);
-            }
-            else {
-            	//移动div
-                oDiv.style.top = oDiv.offsetTop + speed + 'px';     
-            }
-        }, 30);
-    } */
-
-	
+	window.onload = window.onscroll = function () {
+	    var sDiv = document.getElementById('suspension-right');
+	    //滚动点离浏览器顶部的距离
+	    var varTop = document.documentElement.scrollTop || document.body.scrollTop;
+	    //给DIV的高赋值
+	    sDiv.style.top = varTop + (document.documentElement.clientHeight - sDiv.offsetHeight) / 2 + 'px';
+	}
 	//收藏本站 bbs.ecmoban.com
 	function AddFavorite(title, url) {
 	  try {
