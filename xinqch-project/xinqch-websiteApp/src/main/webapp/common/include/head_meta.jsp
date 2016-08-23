@@ -20,7 +20,7 @@
 <script type="text/javascript" src="../../public/js/nprogress.js"></script>
 <script type="text/javascript" src="../../public/js/jquery-1.11.3.js"></script>
 <script type="text/javascript" src="../../public/js/bootstrap.min.js"></script>
-
+<script type="text/javascript" src="../../public/js/jquery-ui.js"></script>
 <style type="text/css">
 /* 侧边栏滑块 */
 #suspension-right { width:225px;height:97px;position:absolute; right:0;background-color:red;}

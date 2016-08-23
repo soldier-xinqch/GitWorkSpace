@@ -8,6 +8,11 @@
 <head>
 <%@ include file="/common/include/head_meta.jsp"%>
 <link rel="stylesheet" href="../../public/css/responsiveslides.css">
+<!-- 瀑布流  -->
+<link href="../../public/css/Icomoon/style.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="../../public/css/default.css">
+<link href="../../public/css/animated-masonry-gallery.css" rel="stylesheet" type="text/css" />
+<!-- 瀑布流  -->
 <style type="text/css">
 #carousel{
 	height:500px; 
@@ -108,98 +113,86 @@
 		</div>
 	</div>
 	<!-- 瀑布流  -->
-	<div id="masonry" class="container-fluid">
-	    <div class="thumbnail">
-	        <div class="imgs">
-	            <img src="./images/2426.png" />
-	        </div>
-	        <div class="caption">
-	            <div class="title">简单OA管理系统</div>
-	            <div class="content">
-	                 
-	            </div>
-	            <div class="author">
-	                by <a target="_blank" href="http://fineui.com/bbs/home.php?mod=space&uid=2426">小小生</a>
-	            </div>
-	        </div>
-	    </div>
-	     <div class="row masonry">
-			<div class="col-xs-12 col-sm-6 col-md-6 item">
-				<div class="thumbnail">
-				图文展示
+	<div class="htmleaf-container">
+	
+		<div id="gallery">
+			<div id="gallery-header">
+				<div id="gallery-header-center">
+					<div id="gallery-header-center-left">
+						<div id="gallery-header-center-left-icon"><span class="iconb" data-icon="&#xe23a;"></span></div>
+						<div id="gallery-header-center-left-title">All Galleries</div>
+					</div>
+					<div id="gallery-header-center-right">
+						<div class="gallery-header-center-right-links" id="filter-all">All</div>
+						<div class="gallery-header-center-right-links" id="filter-studio">Studio</div>
+						<div class="gallery-header-center-right-links" id="filter-landscape">Landscapes</div>
+					</div>
 				</div>
 			</div>
-			<div class="col-xs-12 col-sm-6 col-md-6 item">
-				<div class="thumbnail">图文展示
-				</div>
-			</div>
-			<div class="col-xs-12 col-sm-6 col-md-6 item">
-				<div class="thumbnail">图文展示
-				</div>
-			</div>
-			<div class="col-xs-12 col-sm-6 col-md-6 item">
-				<div class="thumbnail">图文展示
-				</div>
-			</div>
-			<div class="col-xs-12 col-sm-6 col-md-6 item">
-				<div class="thumbnail">图文展示
-				</div>
-			</div>
-			<div class="col-xs-12 col-sm-6 col-md-6 item">
-				<div class="thumbnail">图文展示
-				</div>
-			</div>
-			<div class="col-xs-12 col-sm-6 col-md-6 item">
-				<div class="thumbnail">图文展示
-				</div>
-			</div>
-			<div class="col-xs-12 col-sm-6 col-md-6 item">
-				<div class="thumbnail">图文展示
-				</div>
-			</div>
-			<div class="col-xs-12 col-sm-6 col-md-6 item">
-				<div class="thumbnail">图文展示
-				</div>
-			</div>
-			<div class="col-xs-12 col-sm-6 col-md-6 item">
-				<div class="thumbnail">图文展示
-				</div>
-			</div>
-			<div class="col-xs-12 col-sm-6 col-md-6 item">
-				<div class="thumbnail">图文展示
-				</div>
-			</div>
-			<div class="col-xs-12 col-sm-6 col-md-6 item">
-				<div class="thumbnail">图文展示
-				</div>
-			</div>
-			<div class="col-xs-12 col-sm-6 col-md-6 item">
-				<div class="thumbnail">图文展示
-				</div>
-			</div>
-			<div class="col-xs-12 col-sm-6 col-md-6 item">
-				<div class="thumbnail">图文展示
-				</div>
-			</div>
-			<div class="col-xs-12 col-sm-6 col-md-6 item">
-				<div class="thumbnail">图文展示
-				</div>
-			</div>
-			<div class="col-xs-12 col-sm-6 col-md-6 item">
-				<div class="thumbnail">图文展示
-				</div>
-			</div>
-			<div class="col-xs-12 col-sm-6 col-md-6 item">
-				<div class="thumbnail">图文展示
+			<div id="gallery-content">
+				<div id="gallery-content-center">
+					<img src="../../public/waterfall_imgs/mm1.jpg" class="all studio"/>
+					<img src="../../public/waterfall_imgs/landscape1.jpg" class="all landscape">
+					<img src="../../public/waterfall_imgs/mm2.jpg" class="all studio"/>
+					<img src="../../public/waterfall_imgs/mm17.jpg" class="all studio"/>
+					<img src="../../public/waterfall_imgs/landscape2.jpg" class="all landscape">
+					<img src="../../public/waterfall_imgs/mm3.jpg" class="all studio"/>
+					<img src="../../public/waterfall_imgs/studio3.jpg" class="all studio"/>
+					<img src="../../public/waterfall_imgs/landscape3.jpg" class="all landscape">
+					<img src="../../public/waterfall_imgs/mm4.jpg" class="all studio"/>
+					<img src="../../public/waterfall_imgs/studio4.jpg" class="all studio"/>
+					<img src="../../public/waterfall_imgs/landscape4.jpg" class="all landscape">
+					<img src="../../public/waterfall_imgs/mm5.jpg" class="all studio"/>
+					<img src="../../public/waterfall_imgs/landscape5.jpg" class="all landscape">
+					<img src="../../public/waterfall_imgs/studio6.jpg" class="all studio"/>
+					<img src="../../public/waterfall_imgs/landscape6.jpg" class="all landscape">
+					<img src="../../public/waterfall_imgs/mm6.jpg" class="all studio"/>
+					<img src="../../public/waterfall_imgs/landscape7.jpg" class="all landscape">
+					<img src="../../public/waterfall_imgs/mm16.jpg" class="all studio"/>
+					<img src="../../public/waterfall_imgs/landscape8.jpg" class="all landscape">
+					<img src="../../public/waterfall_imgs/mm7.jpg" class="all studio"/>
+					<img src="../../public/waterfall_imgs/landscape9.jpg" class="all landscape">
+					<img src="../../public/waterfall_imgs/studio10.jpg" class="all studio"/>
+					<img src="../../public/waterfall_imgs/landscape10.jpg" class="all landscape">
+					<img src="../../public/waterfall_imgs/mm8.jpg" class="all studio"/>
+					<img src="../../public/waterfall_imgs/landscape11.jpg" class="all landscape">
+					<img src="../../public/waterfall_imgs/studio12.jpg" class="all studio"/>
+					<img src="../../public/waterfall_imgs/landscape12.jpg" class="all landscape">
+					<img src="../../public/waterfall_imgs/mm15.jpg" class="all studio"/>
+					<img src="../../public/waterfall_imgs/landscape13.jpg" class="all landscape">
+					<img src="../../public/waterfall_imgs/mm9.jpg" class="all studio"/>
+					<img src="../../public/waterfall_imgs/landscape14.jpg" class="all landscape">
+					<img src="../../public/waterfall_imgs/mm10.jpg" class="all studio"/>
+					<img src="../../public/waterfall_imgs/landscape15.jpg" class="all landscape">
+					<img src="../../public/waterfall_imgs/studio16.jpg" class="all studio"/>
+					<img src="../../public/waterfall_imgs/landscape16.jpg" class="all landscape">
+					<img src="../../public/waterfall_imgs/mm1.jpg" class="all studio"/>
+					<img src="../../public/waterfall_imgs/landscape17.jpg" class="all landscape">
+					<img src="../../public/waterfall_imgs/studio18.jpg" class="all studio"/>
+					<img src="../../public/waterfall_imgs/landscape18.jpg" class="all landscape">
+					<img src="../../public/waterfall_imgs/studio19.jpg" class="all studio"/>
+					<img src="../../public/waterfall_imgs/studio20.jpg" class="all studio"/>
+					<img src="../../public/waterfall_imgs/mm12.jpg" class="all studio"/>
+					<img src="../../public/waterfall_imgs/mm13.jpg" class="all studio"/>
+					<img src="../../public/waterfall_imgs/studio23.jpg" class="all studio"/>
+					<img src="../../public/waterfall_imgs/mm14.jpg" class="all studio"/>
+					<img src="../../public/waterfall_imgs/mm18.jpg" class="all studio"/>
+					<img src="../../public/waterfall_imgs/mm19.jpg" class="all studio"/>
+					<img src="../../public/waterfall_imgs/mm20.jpg" class="all studio"/>
 				</div>
 			</div>
 		</div>
+	
+	</div>
+	
 	<h2>Hello World!</h2>
 	<h1>${user}</h1>
 	<!-- 加入收藏按钮容器  -->
 	<div id="suspension-right"></div>
 	<%@ include file="/common/include/foot.jsp"%>
 	<script src="../../public/js/responsiveslides.js"></script>
+	<script type="text/javascript" src="../../public/js/jquery.isotope.min.js"></script>
+	<script type="text/javascript" src="../../public/js/animated-masonry-gallery.js"></script>
 	<script>
 	$(function() {
 		$("#dowebok").responsiveSlides({
